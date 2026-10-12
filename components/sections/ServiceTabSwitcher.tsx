@@ -25,14 +25,22 @@ export const ServiceTabSwitcher: React.FC<ServiceTabSwitcherProps> = ({ services
         <div
           role="tablist"
           aria-label="Pilih layanan perbaikan"
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+              e.preventDefault();
+              setActiveTab(activeTab === 'kulkas' ? 'mesin-cuci' : 'kulkas');
+            }
+          }}
           className="inline-flex p-1.5 bg-[#F1F5F9] rounded-card shadow-inner"
         >
           <button
             type="button"
             role="tab"
+            id="tab-kulkas"
+            aria-controls="panel-service"
             aria-selected={activeTab === 'kulkas'}
             onClick={() => setActiveTab('kulkas')}
-            className={`px-6 py-2.5 text-sm font-semibold rounded-button transition-all duration-200 focus-visible:outline-2 focus-visible:outline-focus ${
+            className={`px-6 py-2.5 text-sm font-semibold rounded-button transition-all duration-200 focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
               activeTab === 'kulkas'
                 ? 'bg-white text-primary-900 shadow-sm'
                 : 'text-text-muted hover:text-text'
@@ -43,9 +51,11 @@ export const ServiceTabSwitcher: React.FC<ServiceTabSwitcherProps> = ({ services
           <button
             type="button"
             role="tab"
+            id="tab-mesin-cuci"
+            aria-controls="panel-service"
             aria-selected={activeTab === 'mesin-cuci'}
             onClick={() => setActiveTab('mesin-cuci')}
-            className={`px-6 py-2.5 text-sm font-semibold rounded-button transition-all duration-200 focus-visible:outline-2 focus-visible:outline-focus ${
+            className={`px-6 py-2.5 text-sm font-semibold rounded-button transition-all duration-200 focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
               activeTab === 'mesin-cuci'
                 ? 'bg-white text-primary-900 shadow-sm'
                 : 'text-text-muted hover:text-text'
@@ -57,7 +67,12 @@ export const ServiceTabSwitcher: React.FC<ServiceTabSwitcherProps> = ({ services
       </div>
 
       {/* Tab Panel Content (Asymmetric Split Layout) */}
-      <div className="bg-surface rounded-card p-6 sm:p-10 border border-border/60 shadow-soft">
+      <div
+        id="panel-service"
+        role="tabpanel"
+        aria-labelledby={activeTab === 'kulkas' ? 'tab-kulkas' : 'tab-mesin-cuci'}
+        className="bg-surface rounded-card p-6 sm:p-10 border border-border/60 shadow-soft"
+      >
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Sisi Kiri: Foto Besar Beresolusi Tinggi */}
           <div className="lg:col-span-6">
@@ -92,7 +107,7 @@ export const ServiceTabSwitcher: React.FC<ServiceTabSwitcherProps> = ({ services
             </div>
 
             <div className="space-y-3">
-              <span className="text-xs font-semibold text-text uppercase tracking-wider block">
+              <span className="text-xs font-semibold text-text block">
                 Gejala kerusakan yang ditangani di lokasi:
               </span>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-text">

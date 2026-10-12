@@ -222,7 +222,7 @@ export const ServiceListFilter: React.FC<ServiceListFilterProps> = ({
                   </p>
 
                   <div className="pt-2 space-y-1.5">
-                    <p className="text-xs font-semibold text-primary-900 uppercase tracking-wide">
+                    <p className="text-xs font-semibold text-primary-900">
                       Tindakan pemeriksaan awal:
                     </p>
                     <ul className="text-xs text-text-muted space-y-1">

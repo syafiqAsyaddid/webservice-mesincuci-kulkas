@@ -50,8 +50,9 @@ export const CommonIssuesChips: React.FC<CommonIssuesChipsProps> = ({ issues }) 
             <button
               key={issue.slug}
               type="button"
+              aria-pressed={isSelected}
               onClick={() => setSelectedSlug(issue.slug)}
-              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-button text-xs sm:text-sm font-semibold transition-all duration-150 focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
+              className={`inline-flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-button text-xs sm:text-sm font-semibold transition-all duration-150 focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
                 isSelected
                   ? 'bg-primary-900 text-white shadow-md -translate-y-0.5'
                   : 'bg-[#F1F5F9] text-text hover:bg-[#E2E8F0]'
@@ -69,7 +70,7 @@ export const CommonIssuesChips: React.FC<CommonIssuesChipsProps> = ({ issues }) 
         <div className="bg-surface rounded-card p-6 sm:p-8 border border-border/60 shadow-soft max-w-3xl mx-auto space-y-6 animate-in fade-in duration-200">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border/60">
             <div>
-              <span className="text-xs font-semibold text-primary-700 uppercase tracking-wider block">
+              <span className="text-xs font-semibold text-primary-700 block">
                 {selectedIssue.category === 'kulkas' ? 'Kerusakan kulkas' : 'Kerusakan mesin cuci'}
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-primary-900 mt-0.5">
@@ -86,7 +87,7 @@ export const CommonIssuesChips: React.FC<CommonIssuesChipsProps> = ({ issues }) 
           </div>
 
           <div className="space-y-2">
-            <h4 className="text-xs font-bold text-text uppercase tracking-wide">Gejala yang terjadi:</h4>
+            <h4 className="text-xs font-bold text-text">Gejala yang terjadi:</h4>
             <p className="text-sm text-text-muted leading-relaxed">
               {selectedIssue.symptomSummary}
             </p>

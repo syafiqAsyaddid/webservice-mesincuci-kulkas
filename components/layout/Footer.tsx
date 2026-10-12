@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
 
           {/* Kolom 2: Layanan Utama */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+            <h3 className="text-sm font-semibold text-white mb-3">
               Layanan Perbaikan
             </h3>
             <ul className="space-y-2 text-sm text-primary-100">
@@ -61,7 +61,7 @@ export const Footer: React.FC = () => {
 
           {/* Kolom 3: Cakupan Wilayah */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+            <h3 className="text-sm font-semibold text-white mb-3">
               Area Panggilan
             </h3>
             <ul className="space-y-2 text-sm text-primary-100">
@@ -102,7 +102,7 @@ export const Footer: React.FC = () => {
 
           {/* Kolom 4: Informasi & Legal */}
           <div>
-            <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
+            <h3 className="text-sm font-semibold text-white mb-3">
               Informasi & Legal
             </h3>
             <ul className="space-y-2 text-sm text-primary-100">

@@ -46,14 +46,14 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const sizeClasses = {
-    sm: 'min-h-[40px] px-4 py-2 text-xs font-semibold gap-1.5',
+    sm: 'min-h-[44px] px-4 py-2.5 text-xs font-semibold gap-1.5',
     md: 'min-h-[46px] px-5 py-2.5 text-sm font-semibold gap-2',
     lg: 'min-h-[50px] px-6 py-3 text-base font-semibold gap-2.5',
   }[size];
 
   const variantClasses = {
     whatsapp:
-      'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-whatsapp hover:shadow-whatsapp-hover hover:from-emerald-600 hover:to-emerald-700 hover:-translate-y-0.5 active:translate-y-0',
+      'bg-gradient-to-r from-emerald-700 to-emerald-800 text-white shadow-whatsapp hover:shadow-whatsapp-hover hover:from-emerald-800 hover:to-emerald-900 hover:-translate-y-0.5 active:translate-y-0',
     primary:
       'bg-primary-600 text-white shadow-sm hover:bg-primary-700 hover:-translate-y-0.5 active:translate-y-0',
     secondary:

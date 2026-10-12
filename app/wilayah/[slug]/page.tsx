@@ -220,7 +220,7 @@ export default async function RegionDetailPage({ params }: PageProps) {
 
           {/* Kota Lain */}
           <div className="bg-surface rounded-card p-5 border border-border space-y-3">
-            <h4 className="text-sm font-bold text-primary-900 uppercase tracking-wide">
+            <h4 className="text-sm font-bold text-primary-900">
               Area Layanan Lainnya
             </h4>
             <ul className="space-y-2 text-sm">

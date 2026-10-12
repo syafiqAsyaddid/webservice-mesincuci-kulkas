@@ -67,8 +67,9 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
               {/* Tangerang Node */}
               <button
                 type="button"
+                aria-pressed={activeSlug === 'tangerang'}
                 onClick={() => setActiveSlug('tangerang')}
-                className={`p-3 rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
+                className={`p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
                   activeSlug === 'tangerang'
                     ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
                     : 'bg-white border border-border/80 text-text hover:bg-slate-50'
@@ -82,8 +83,9 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
               {/* Jakarta Node */}
               <button
                 type="button"
+                aria-pressed={activeSlug === 'jakarta'}
                 onClick={() => setActiveSlug('jakarta')}
-                className={`p-3 rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
+                className={`p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
                   activeSlug === 'jakarta'
                     ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
                     : 'bg-white border border-border/80 text-text hover:bg-slate-50'
@@ -97,14 +99,15 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
               {/* Bekasi Node (Pusat Workshop) */}
               <button
                 type="button"
+                aria-pressed={activeSlug === 'bekasi'}
                 onClick={() => setActiveSlug('bekasi')}
-                className={`p-3 rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer relative ${
+                className={`p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer relative ${
                   activeSlug === 'bekasi'
-                    ? 'bg-emerald-600 text-white shadow-whatsapp scale-105 ring-2 ring-emerald-400'
+                    ? 'bg-emerald-700 text-white shadow-whatsapp scale-105 ring-2 ring-emerald-500'
                     : 'bg-emerald-50 border border-emerald-300 text-emerald-900 hover:bg-emerald-100/70'
                 }`}
               >
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-400 text-amber-950 uppercase tracking-tight">
+                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-400 text-amber-950 tracking-tight">
                   Workshop
                 </span>
                 <MapPin className={`w-4 h-4 mx-auto mb-1 ${activeSlug === 'bekasi' ? 'text-white' : 'text-emerald-700'}`} />
@@ -115,8 +118,9 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
               {/* Depok Node */}
               <button
                 type="button"
+                aria-pressed={activeSlug === 'depok'}
                 onClick={() => setActiveSlug('depok')}
-                className={`col-start-2 p-3 rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
+                className={`col-start-2 p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
                   activeSlug === 'depok'
                     ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
                     : 'bg-white border border-border/80 text-text hover:bg-slate-50'
@@ -130,8 +134,9 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
               {/* Bogor Node */}
               <button
                 type="button"
+                aria-pressed={activeSlug === 'bogor'}
                 onClick={() => setActiveSlug('bogor')}
-                className={`col-start-3 p-3 rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
+                className={`col-start-3 p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
                   activeSlug === 'bogor'
                     ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
                     : 'bg-white border border-border/80 text-text hover:bg-slate-50'
@@ -149,7 +154,7 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
         <div className="lg:col-span-5 bg-white rounded-card p-6 sm:p-8 border border-border/60 shadow-card space-y-5">
           <div className="flex items-center justify-between pb-3 border-b border-border/60">
             <div>
-              <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider block">
+              <span className="text-xs font-semibold text-emerald-800 block">
                 Wilayah Terpilih
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-primary-900">

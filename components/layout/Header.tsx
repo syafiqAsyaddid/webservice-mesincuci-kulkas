@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X, MessageSquare, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
@@ -18,6 +18,16 @@ const navLinks = [
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen]);
 
   const handleWhatsAppClick = () => {
     trackEvent('whatsapp_click', { source: 'header_nav' });
@@ -84,13 +94,14 @@ export const Header: React.FC = () => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-            className="p-2.5 rounded-button text-text hover:bg-primary-50 focus-visible:ring-2 focus-visible:ring-focus"
+            className="inline-flex items-center gap-1.5 px-3 py-2 min-h-[44px] rounded-button text-text hover:bg-primary-50 focus-visible:ring-2 focus-visible:ring-focus cursor-pointer"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6" aria-hidden="true" />
+              <X className="w-5 h-5" aria-hidden="true" />
             ) : (
-              <Menu className="w-6 h-6" aria-hidden="true" />
+              <Menu className="w-5 h-5" aria-hidden="true" />
             )}
+            <span className="text-xs font-semibold">Menu</span>
           </button>
         </div>
       </div>

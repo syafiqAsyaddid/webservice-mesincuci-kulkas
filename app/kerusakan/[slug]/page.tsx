@@ -169,7 +169,7 @@ export default async function IssueDetailPage({ params }: PageProps) {
                 href="/wilayah"
                 className="text-xs font-semibold text-primary-700 hover:text-primary-900 underline"
               >
-                Lihat daftar kecamatan & wilayah yang dilayani &rarr;
+                Lihat daftar kecamatan & wilayah yang dilayani
               </Link>
             </div>
           </section>
@@ -244,7 +244,7 @@ export default async function IssueDetailPage({ params }: PageProps) {
           {/* Other Issues in Category */}
           {otherIssues.length > 0 && (
             <div className="bg-surface rounded-card p-5 border border-border space-y-3">
-              <h4 className="text-sm font-bold text-primary-900 uppercase tracking-wide">
+              <h4 className="text-sm font-bold text-primary-900">
                 Kerusakan {issue.category === 'kulkas' ? 'Kulkas' : 'Mesin Cuci'} Lainnya
               </h4>
               <ul className="space-y-2 text-sm">

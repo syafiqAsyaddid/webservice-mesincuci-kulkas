@@ -35,7 +35,7 @@ export const WhatsAppSticky: React.FC<WhatsAppStickyProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleClick}
-          className="flex items-center justify-center gap-2 w-full min-h-[48px] px-4 py-2.5 bg-whatsapp hover:bg-whatsapp-dark text-white font-semibold rounded-button text-base shadow-sm focus-visible:ring-2 focus-visible:ring-focus transition-colors"
+          className="flex items-center justify-center gap-2 w-full min-h-[48px] px-4 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-semibold rounded-button text-base shadow-sm focus-visible:ring-2 focus-visible:ring-focus transition-colors"
           aria-label="Konsultasi kerusakan langsung via WhatsApp"
         >
           <MessageSquare className="w-5 h-5 flex-shrink-0" aria-hidden="true" />

@@ -27,7 +27,6 @@ export const CostEstimator: React.FC = () => {
   const [selectedRuleId, setSelectedRuleId] = useState<string>('');
   const [isOtherIssue, setIsOtherIssue] = useState<boolean>(false);
 
-  // Filter rules by category and subtype
   const availableRules = detailedCostRules.filter((rule) => {
     if (!category) return false;
     if (rule.category !== category) return false;
@@ -300,7 +299,7 @@ export const CostEstimator: React.FC = () => {
             </div>
 
             <div>
-              <p className="text-xs text-text-muted uppercase tracking-wider font-semibold">
+              <p className="text-xs text-text-muted font-semibold">
                 Pekerjaan:
               </p>
               <h3 className="text-lg font-bold text-primary-900 mt-0.5">
