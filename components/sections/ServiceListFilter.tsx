@@ -2,7 +2,8 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { Search, ArrowRight, MessageSquare, Wrench } from 'lucide-react';
+import Image from 'next/image';
+import { Search, ArrowRight, MessageSquare, Wrench, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -110,22 +111,46 @@ export const ServiceListFilter: React.FC<ServiceListFilterProps> = ({
         </div>
       </div>
 
-      {/* Overview Cards by Category */}
+      {/* Overview Card with Photo when Category Selected */}
       {selectedCategory !== 'all' && (
-        <div className="bg-primary-50 border border-primary-100 rounded-card p-6">
+        <div>
           {services
             .filter((s) => s.category === selectedCategory)
             .map((svc) => (
-              <div key={svc.id} className="space-y-3">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center text-primary-700">
-                    <Wrench className="w-4 h-4" aria-hidden="true" />
+              <div
+                key={svc.id}
+                className="bg-surface rounded-card p-6 border border-border shadow-card grid grid-cols-1 md:grid-cols-12 gap-6 items-center"
+              >
+                {svc.imagePath && (
+                  <div className="md:col-span-4 relative aspect-[16/10] rounded-lg overflow-hidden border border-border/80">
+                    <Image
+                      src={svc.imagePath}
+                      alt={svc.name}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 768px) 100vw, 350px"
+                    />
                   </div>
-                  <h2 className="text-xl font-bold text-primary-900">{svc.name}</h2>
+                )}
+                <div className={svc.imagePath ? 'md:col-span-8 space-y-3' : 'md:col-span-12 space-y-3'}>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="accent">
+                      {svc.category === 'kulkas' ? 'Spesialis Pendingin' : 'Spesialis Pencuci'}
+                    </Badge>
+                    <h2 className="text-xl font-bold text-primary-900">{svc.name}</h2>
+                  </div>
+                  <p className="text-sm text-text-muted leading-relaxed">
+                    {svc.shortDescription}
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-1 text-xs text-text-muted">
+                    {svc.symptoms.slice(0, 3).map((sym, idx) => (
+                      <span key={idx} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-muted border border-border">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>{sym}</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <p className="text-sm text-text-muted leading-relaxed">
-                  {svc.shortDescription}
-                </p>
               </div>
             ))}
         </div>
@@ -228,7 +253,7 @@ export const ServiceListFilter: React.FC<ServiceListFilterProps> = ({
                       issue: issue.title,
                     })}
                     isExternal
-                    className="gap-1.5 text-xs"
+                    className="gap-1.5 text-xs shadow-xs"
                   >
                     <MessageSquare className="w-3.5 h-3.5" aria-hidden="true" />
                     <span>Tanya Kerusakan Ini</span>

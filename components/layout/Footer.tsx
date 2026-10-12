@@ -1,21 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
+import { MapPin, Phone, MessageSquare } from 'lucide-react';
 import { businessInfo } from '@/lib/content/business';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-primary-900 text-white pt-12 pb-24 md:pb-12 border-t border-primary-800">
+    <footer className="bg-primary-900 text-white pt-14 pb-24 md:pb-14 border-t border-primary-800">
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
-          {/* Kolom 1: Profil Layanan */}
-          <div className="md:col-span-1">
-            <h2 className="text-lg font-bold text-white mb-2">{businessInfo.name}</h2>
-            <p className="text-sm text-primary-100 leading-relaxed mb-4">
+          {/* Kolom 1: Profil Layanan & Alamat */}
+          <div className="md:col-span-1 space-y-3">
+            <h2 className="text-lg font-bold text-white">{businessInfo.name}</h2>
+            <p className="text-sm text-primary-100/90 leading-relaxed">
               {businessInfo.tagline}
             </p>
-            <p className="text-xs text-primary-100/80">
-              Operasional: {businessInfo.operatingHours}
-            </p>
+            <div className="pt-2 space-y-2 text-xs text-primary-100/80">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <span className="leading-relaxed">{businessInfo.address}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-4 h-4 text-accent-500 flex-shrink-0" aria-hidden="true" />
+                <span>{businessInfo.displayPhone}</span>
+              </div>
+            </div>
           </div>
 
           {/* Kolom 2: Layanan Utama */}
@@ -54,20 +62,28 @@ export const Footer: React.FC = () => {
           {/* Kolom 3: Cakupan Wilayah */}
           <div>
             <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-3">
-              Area Layanan
+              Area Panggilan
             </h3>
             <ul className="space-y-2 text-sm text-primary-100">
               <li>
                 <Link
-                  href="/wilayah"
+                  href="/wilayah/bekasi"
                   className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
                 >
-                  DKI Jakarta (Pusat, Selatan, Barat, Timur, Utara)
+                  Tambun, Cibitung & Bekasi
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/wilayah"
+                  href="/wilayah/jakarta"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                >
+                  DKI Jakarta (Selatan, Timur, Pusat, dll.)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/wilayah/depok"
                   className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
                 >
                   Kota Depok & Sekitarnya
@@ -75,18 +91,10 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/wilayah"
+                  href="/wilayah/tangerang"
                   className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
                 >
-                  Tangerang & Tangsel
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/wilayah"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
-                >
-                  Bekasi & Bogor
+                  Tangerang & Tangsel (BSD, Bintaro)
                 </Link>
               </li>
             </ul>

@@ -16,6 +16,7 @@ export const servicesData: ServiceItem[] = [
       'Kompresor berdengung keras atau sering mati hidup',
     ],
     ctaText: 'Konsultasi Kerusakan Kulkas',
+    imagePath: '/images/service-kulkas.jpg',
   },
   {
     id: 'srv-mesin-cuci',
@@ -32,6 +33,7 @@ export const servicesData: ServiceItem[] = [
       'Getaran atau bunyi berisik keras saat proses peras (spin)',
     ],
     ctaText: 'Konsultasi Kerusakan Mesin Cuci',
+    imagePath: '/images/service-mesincuci.jpg',
   },
 ];
 

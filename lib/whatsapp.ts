@@ -14,7 +14,9 @@ export function generateWhatsAppUrl(params: WhatsAppMessageParams = {}): string 
     return `https://wa.me/${phone}?text=${encodeURIComponent(params.customText)}`;
   }
 
-  const parts: string[] = ['Halo, saya ingin konsultasi mengenai service peralatan rumah tangga.'];
+  const parts: string[] = [
+    `Halo ${businessInfo.name}, saya ingin konsultasi mengenai service peralatan rumah tangga.`,
+  ];
 
   if (params.category) {
     const categoryName = params.category === 'kulkas' ? 'Kulkas' : 'Mesin Cuci';

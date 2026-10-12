@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, MessageSquare } from 'lucide-react';
+import { Menu, X, MessageSquare, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { businessInfo } from '@/lib/content/business';
 import { generateWhatsAppUrl } from '@/lib/whatsapp';
@@ -24,18 +24,18 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-surface/95 backdrop-blur-sm border-b border-border">
+    <header className="sticky top-0 z-40 w-full bg-surface/95 backdrop-blur-sm border-b border-border shadow-xs">
       <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
         {/* Brand */}
         <Link
           href="/"
           className="flex flex-col focus-visible:ring-2 focus-visible:ring-focus rounded-sm py-1"
         >
-          <span className="text-lg sm:text-xl font-bold text-primary-900 tracking-tight">
+          <span className="text-lg sm:text-xl font-extrabold text-primary-900 tracking-tight">
             {businessInfo.name}
           </span>
           <span className="text-xs text-text-muted hidden sm:inline">
-            Service Kulkas & Mesin Cuci
+            Service Kulkas & Mesin Cuci Panggilan
           </span>
         </Link>
 
@@ -52,15 +52,25 @@ export const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center">
+        {/* Desktop CTA & Direct Phone */}
+        <div className="hidden md:flex items-center space-x-3">
+          <a
+            href={`tel:${businessInfo.whatsappNumber}`}
+            onClick={() => trackEvent('phone_click', { source: 'header' })}
+            className="text-xs font-semibold text-text hover:text-primary-800 flex items-center gap-1.5 px-3 py-2 rounded-button border border-border bg-surface-muted/60 transition-colors"
+            title="Telepon langsung teknisi"
+          >
+            <Phone className="w-3.5 h-3.5 text-primary-700" aria-hidden="true" />
+            <span>{businessInfo.displayPhone}</span>
+          </a>
+
           <Button
             variant="whatsapp"
             size="sm"
             href={generateWhatsAppUrl()}
             isExternal
             onClick={handleWhatsAppClick}
-            className="gap-2"
+            className="gap-2 shadow-xs"
           >
             <MessageSquare className="w-4 h-4" aria-hidden="true" />
             <span>Chat WhatsApp</span>
@@ -88,7 +98,17 @@ export const Header: React.FC = () => {
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden border-b border-border bg-surface px-4 pt-3 pb-5 space-y-3 shadow-card animate-in fade-in duration-150">
-          <nav className="flex flex-col space-y-2" aria-label="Navigasi Seluler">
+          <div className="p-2.5 bg-surface-muted rounded-button text-xs text-text-muted flex items-center justify-between">
+            <span>Telepon Langsung:</span>
+            <a
+              href={`tel:${businessInfo.whatsappNumber}`}
+              className="font-bold text-primary-900"
+            >
+              {businessInfo.displayPhone}
+            </a>
+          </div>
+
+          <nav className="flex flex-col space-y-1" aria-label="Navigasi Seluler">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -110,7 +130,7 @@ export const Header: React.FC = () => {
                 handleWhatsAppClick();
                 setMobileMenuOpen(false);
               }}
-              className="w-full gap-2"
+              className="w-full gap-2 shadow-sm"
             >
               <MessageSquare className="w-5 h-5" aria-hidden="true" />
               <span>Hubungi via WhatsApp</span>

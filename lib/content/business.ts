@@ -1,12 +1,11 @@
 import { BusinessConfig } from '@/types';
 
-// Placeholder configuration until official brand and phone number are approved
 export const businessInfo: BusinessConfig = {
-  name: '[NAMA LAYANAN / BRAND]',
+  name: "D'cool technical service",
   tagline: 'Layanan Service Kulkas & Mesin Cuci Panggilan Jabodetabek',
-  whatsappNumber: '6281234567890', // [NOMOR RESMI BELUM DIKONFIRMASI]
-  displayPhone: '0812-3456-7890',
+  whatsappNumber: '6281214048578',
+  displayPhone: '0812-1404-8578',
   operatingHours: 'Senin - Sabtu: 08.00 - 18.00 WIB (Kunjungan sesuai jadwal konfirmasi)',
-  coverageSummary: 'Melayani area Jakarta, Bogor, Depok, Tangerang, dan Bekasi tertentu.',
-  addressPlaceholder: '[LOKASI OPERASIONAL DIKONFIRMASI]',
+  coverageSummary: 'Panggilan ke wilayah Jakarta, Bogor, Depok, Tangerang, dan Bekasi.',
+  address: 'Srimahi, no.49, Srimahi, Kec. Tambun Utara, Kabupaten Bekasi, Jawa Barat 17510',
 };

@@ -7,7 +7,7 @@ export interface BusinessConfig {
   displayPhone: string;
   operatingHours: string;
   coverageSummary: string;
-  addressPlaceholder?: string;
+  address: string;
 }
 
 export interface ServiceItem {
@@ -18,6 +18,7 @@ export interface ServiceItem {
   shortDescription: string;
   symptoms: string[];
   ctaText: string;
+  imagePath?: string;
 }
 
 export interface IssueDetail {
