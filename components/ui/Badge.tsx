@@ -1,31 +1,35 @@
 import React from 'react';
 
-export type BadgeVariant = 'default' | 'success' | 'warning' | 'info' | 'accent';
+export type BadgeVariant = 'default' | 'success' | 'warning' | 'info' | 'accent' | 'neutral';
 
 interface BadgeProps {
   children: React.ReactNode;
   variant?: BadgeVariant;
   className?: string;
+  icon?: React.ReactNode;
 }
 
 export const Badge: React.FC<BadgeProps> = ({
   children,
   variant = 'default',
   className = '',
+  icon,
 }) => {
   const variantClasses = {
-    default: 'bg-primary-100 text-primary-900 border-border',
-    success: 'bg-emerald-50 text-emerald-800 border-emerald-200',
-    warning: 'bg-amber-50 text-amber-800 border-amber-200',
-    info: 'bg-sky-50 text-sky-800 border-sky-200',
-    accent: 'bg-accent-100 text-accent-700 border-accent-600/30 font-semibold',
+    default: 'bg-[#EBF3FC] text-primary-800 border-transparent',
+    success: 'bg-[#F0FDF4] text-emerald-800 border-transparent',
+    warning: 'bg-[#FFFBEB] text-amber-800 border-transparent',
+    info: 'bg-[#F0F9FF] text-sky-800 border-transparent',
+    accent: 'bg-[#FEF3C7] text-amber-900 border-transparent',
+    neutral: 'bg-surface-tint text-text-muted border-transparent',
   }[variant];
 
   return (
     <span
-      className={`inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md border ${variantClasses} ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-badge border ${variantClasses} ${className}`}
     >
-      {children}
+      {icon && <span className="flex-shrink-0 text-current">{icon}</span>}
+      <span>{children}</span>
     </span>
   );
 };

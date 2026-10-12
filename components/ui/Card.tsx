@@ -14,17 +14,17 @@ export const Card: React.FC<CardProps> = ({
   href,
   highlighted = false,
 }) => {
-  const baseClasses = `bg-surface rounded-card p-5 sm:p-6 border transition-all duration-200 ${
+  const baseClasses = `bg-surface rounded-card p-6 border transition-all duration-200 ${
     highlighted
-      ? 'border-primary-600/70 bg-gradient-to-b from-primary-50/60 to-surface shadow-highlight'
-      : 'border-border/70 shadow-card hover:shadow-hover hover:border-primary-600/40'
+      ? 'border-primary-600/30 bg-gradient-to-b from-primary-50/40 to-surface shadow-card ring-1 ring-primary-600/10'
+      : 'border-border/60 shadow-soft hover:shadow-card hover:border-border'
   }`;
 
   if (href) {
     return (
       <Link
         href={href}
-        className={`${baseClasses} block focus-visible:ring-2 focus-visible:ring-focus ${className}`}
+        className={`${baseClasses} block focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 ${className}`}
       >
         {children}
       </Link>
