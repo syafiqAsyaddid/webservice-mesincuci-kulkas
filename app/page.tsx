@@ -5,13 +5,11 @@ import {
   CheckCircle2,
   Clock,
   MessageSquare,
-  HelpCircle,
   ShieldCheck,
   Phone,
 } from 'lucide-react';
 import { Button, WhatsAppIcon } from '@/components/ui/Button';
 import { Accordion } from '@/components/ui/Accordion';
-import { Badge } from '@/components/ui/Badge';
 import { businessInfo } from '@/lib/content/business';
 import { servicesData, priorityIssues } from '@/lib/content/services';
 import { regionsData } from '@/lib/content/regions';
@@ -26,6 +24,35 @@ export default function HomePage() {
     <div className="space-y-16 sm:space-y-24">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-8 pb-12 sm:pt-14 sm:pb-20 bg-gradient-to-br from-white via-[#FCFDFE] to-[#F1F6FA] border-b border-border/50">
+        {/* Pattern 1: Geometric Technical Blueprint Grid (3.5% Opacity) */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.035] bg-[linear-gradient(to_right,#12345A_1px,transparent_1px),linear-gradient(to_bottom,#12345A_1px,transparent_1px)] [background-size:36px_36px]"
+          aria-hidden="true"
+        />
+
+        {/* Pattern 2: Precision Drafting Crosshairs (+) */}
+        <div className="absolute top-4 left-6 text-primary-900/20 font-mono text-xs select-none pointer-events-none" aria-hidden="true">
+          +
+        </div>
+        <div className="absolute top-4 right-8 text-primary-900/20 font-mono text-xs select-none pointer-events-none" aria-hidden="true">
+          +
+        </div>
+        <div className="absolute bottom-4 left-1/3 text-primary-900/15 font-mono text-xs select-none pointer-events-none" aria-hidden="true">
+          +
+        </div>
+
+        {/* Pattern 3: Technical Blueprint Schematic Guide Overlay */}
+        <svg
+          className="absolute top-0 right-0 w-80 h-80 sm:w-96 sm:h-96 pointer-events-none opacity-[0.04] text-primary-900"
+          viewBox="0 0 384 384"
+          fill="none"
+          aria-hidden="true"
+        >
+          <line x1="0" y1="0" x2="384" y2="384" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" />
+          <circle cx="192" cy="192" r="140" stroke="currentColor" strokeWidth="1" />
+          <circle cx="192" cy="192" r="70" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" />
+        </svg>
+
         <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             <div className="lg:col-span-7 space-y-6">
@@ -102,11 +129,21 @@ export default function HomePage() {
       </section>
 
       {/* Seksi Layanan Spesialis */}
-      <section className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Varied Geometric Diagonal Hatch Pattern Behind Section (3% Opacity) */}
+        <div
+          className="absolute inset-x-4 -inset-y-6 pointer-events-none -z-10 rounded-card opacity-[0.03] bg-[repeating-linear-gradient(-45deg,#12345A_0,#12345A_1px,transparent_0,transparent_16px)]"
+          aria-hidden="true"
+        />
+
         <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-          <Badge variant="default">
-            Layanan Spesialis
-          </Badge>
+          {/* Geometric Technical Index Header */}
+          <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
+            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+            <span>01 // Spesialisasi Perangkat</span>
+            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+          </div>
+
           <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
             Layanan Perbaikan yang Kami Sediakan
           </h2>
@@ -119,61 +156,115 @@ export default function HomePage() {
       </section>
 
       {/* Alur Kunjungan Teknisi */}
-      <section className="bg-[#F8FAFC] border-y border-border/60 py-12 sm:py-16">
-        <div className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#F8FAFC] via-[#F3F7FA] to-[#F8FAFC] border-y border-border/60 py-12 sm:py-16">
+        {/* Varied Geometric Circuit / Flow Matrix Pattern (4% Opacity) */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.04] bg-[radial-gradient(#12345A_1.5px,transparent_1.5px),linear-gradient(to_right,#12345A_1px,transparent_1px)] [background-size:28px_28px,112px_28px]"
+          aria-hidden="true"
+        />
+
+        {/* Decorative Technical Line Across Top */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-600/30 to-transparent"
+          aria-hidden="true"
+        />
+
+        {/* Precision Crosshair Corner Accents */}
+        <div className="absolute top-3 left-6 text-primary-900/15 font-mono text-xs select-none pointer-events-none" aria-hidden="true">+</div>
+        <div className="absolute top-3 right-6 text-primary-900/15 font-mono text-xs select-none pointer-events-none" aria-hidden="true">+</div>
+
+        <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
+            {/* Geometric Technical Index Header */}
+            <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
+              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+              <span>02 // Prosedur Panggilan</span>
+              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+            </div>
+
             <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
               Alur Layanan Panggilan Teknisi
             </h2>
             <p className="text-sm sm:text-base text-text-muted">
-              Tiga tahap praktis dari konsultasi hingga perangkat kembali berfungsi normal.
+              Tiga tahap praktis dari konsultasi awal hingga perangkat kembali berfungsi normal.
             </p>
           </div>
 
           <div className="relative">
+            {/* Connecting Track between Step Nodes */}
             <div
-              className="hidden md:block absolute top-10 left-[16%] right-[16%] h-0.5 border-t-2 border-dashed border-primary-600/30 -z-0"
+              className="hidden md:block absolute top-10 left-[16%] right-[16%] h-0.5 border-t-2 border-dashed border-primary-600/30 z-0"
               aria-hidden="true"
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-              <div className="bg-white rounded-card p-6 border border-border/60 shadow-soft text-center space-y-3">
-                <div className="w-12 h-12 mx-auto rounded-button bg-[#EBF3FC] text-primary-700 flex items-center justify-center font-bold text-lg shadow-xs">
-                  <MessageSquare className="w-6 h-6" aria-hidden="true" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 relative z-10">
+              {/* Step 1 */}
+              <div className="bg-white rounded-card p-6 border border-border/80 shadow-soft text-left space-y-4 relative group hover:border-primary-400 transition-colors">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-2xl font-black text-primary-900 tracking-tight">
+                    01
+                  </span>
+                  <div className="w-10 h-10 rounded-button bg-primary-50 text-primary-700 flex items-center justify-center font-bold shadow-xs">
+                    <MessageSquare className="w-5 h-5" aria-hidden="true" />
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-semibold text-primary-700 block">Tahap 1</span>
-                  <h3 className="text-lg font-bold text-primary-900">Konsultasi Kendala via WhatsApp</h3>
+
+                <div className="space-y-1.5">
+                  <h3 className="text-base sm:text-lg font-bold text-primary-900">
+                    Konsultasi Kendala via WhatsApp
+                  </h3>
+                  <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
+                    Ceritakan merek, jenis perangkat, dan kendala yang dialami serta lokasi Anda di wilayah Jabodetabek.
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
-                  Ceritakan merek, jenis perangkat, dan kendala yang dialami serta lokasi Anda di wilayah Jabodetabek.
-                </p>
+
+                <div className="w-8 h-0.5 bg-primary-600/60 rounded-full" aria-hidden="true" />
               </div>
 
-              <div className="bg-white rounded-card p-6 border border-border/60 shadow-soft text-center space-y-3">
-                <div className="w-12 h-12 mx-auto rounded-button bg-[#FEF3C7] text-amber-800 flex items-center justify-center font-bold text-lg shadow-xs">
-                  <Clock className="w-6 h-6" aria-hidden="true" />
+              {/* Step 2 */}
+              <div className="bg-white rounded-card p-6 border border-border/80 shadow-soft text-left space-y-4 relative group hover:border-amber-400 transition-colors">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-2xl font-black text-amber-900 tracking-tight">
+                    02
+                  </span>
+                  <div className="w-10 h-10 rounded-button bg-amber-50 text-amber-800 flex items-center justify-center font-bold shadow-xs">
+                    <Clock className="w-5 h-5" aria-hidden="true" />
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-semibold text-amber-800 block">Tahap 2</span>
-                  <h3 className="text-lg font-bold text-primary-900">Konfirmasi Jadwal & Perkiraan Biaya</h3>
+
+                <div className="space-y-1.5">
+                  <h3 className="text-base sm:text-lg font-bold text-primary-900">
+                    Konfirmasi Jadwal & Perkiraan Biaya
+                  </h3>
+                  <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
+                    Tim teknisi memastikan ketersediaan rute terdekat dan memberikan informasi biaya jasa pengecekan.
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
-                  Tim teknisi memastikan ketersediaan rute terdekat dan memberikan informasi biaya jasa pengecekan.
-                </p>
+
+                <div className="w-8 h-0.5 bg-amber-600/60 rounded-full" aria-hidden="true" />
               </div>
 
-              <div className="bg-white rounded-card p-6 border border-border/60 shadow-soft text-center space-y-3">
-                <div className="w-12 h-12 mx-auto rounded-button bg-[#F0FDF4] text-emerald-700 flex items-center justify-center font-bold text-lg shadow-xs">
-                  <Wrench className="w-6 h-6" aria-hidden="true" />
+              {/* Step 3 */}
+              <div className="bg-white rounded-card p-6 border border-border/80 shadow-soft text-left space-y-4 relative group hover:border-emerald-400 transition-colors">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-2xl font-black text-emerald-900 tracking-tight">
+                    03
+                  </span>
+                  <div className="w-10 h-10 rounded-button bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold shadow-xs">
+                    <Wrench className="w-5 h-5" aria-hidden="true" />
+                  </div>
                 </div>
-                <div className="space-y-1">
-                  <span className="text-xs font-semibold text-emerald-700 block">Tahap 3</span>
-                  <h3 className="text-lg font-bold text-primary-900">Pemeriksaan & Perbaikan di Tempat</h3>
+
+                <div className="space-y-1.5">
+                  <h3 className="text-base sm:text-lg font-bold text-primary-900">
+                    Pemeriksaan & Perbaikan di Tempat
+                  </h3>
+                  <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
+                    Teknisi tiba sesuai jadwal, melakukan diagnosa fisik, dan mulai memperbaiki setelah disetujui Anda.
+                  </p>
                 </div>
-                <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
-                  Teknisi tiba sesuai jadwal, melakukan diagnosa fisik, dan mulai memperbaiki setelah disetujui Anda.
-                </p>
+
+                <div className="w-8 h-0.5 bg-emerald-600/60 rounded-full" aria-hidden="true" />
               </div>
             </div>
           </div>
@@ -181,11 +272,21 @@ export default function HomePage() {
       </section>
 
       {/* Gejala Kerusakan yang Sering Ditangani */}
-      <section className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Varied Geometric Micro-Matrix Pattern (3.5% Opacity) */}
+        <div
+          className="absolute inset-x-4 -inset-y-6 pointer-events-none -z-10 rounded-card opacity-[0.035] bg-[radial-gradient(#12345A_1.2px,transparent_1.2px)] [background-size:20px_20px]"
+          aria-hidden="true"
+        />
+
         <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-          <Badge variant="neutral">
-            Diagnosa Cepat
-          </Badge>
+          {/* Geometric Technical Index Header */}
+          <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
+            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+            <span>03 // Diagnosa Awal</span>
+            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+          </div>
+
           <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
             Kerusakan yang Sering Ditangani
           </h2>
@@ -203,12 +304,22 @@ export default function HomePage() {
       </section>
 
       {/* Tanya Jawab (FAQ) */}
-      <section id="faq" className="max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="faq" className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Varied Geometric Modular Grid Pattern Behind FAQ (3% Opacity) */}
+        <div
+          className="absolute inset-x-8 -inset-y-6 pointer-events-none -z-10 rounded-card opacity-[0.03] bg-[linear-gradient(to_right,#12345A_1px,transparent_1px),linear-gradient(to_bottom,#12345A_1px,transparent_1px)] [background-size:48px_48px]"
+          aria-hidden="true"
+        />
+
         <div className="max-w-3xl mx-auto space-y-8">
           <div className="text-center space-y-2">
-            <Badge variant="default" icon={<HelpCircle className="w-3.5 h-3.5 text-primary-700" />}>
-              Pusat Informasi
-            </Badge>
+            {/* Geometric Technical Index Header */}
+            <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
+              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+              <span>05 // Transparansi Layanan</span>
+              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+            </div>
+
             <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
               Pertanyaan yang Sering Diajukan
             </h2>
@@ -229,13 +340,28 @@ export default function HomePage() {
 
       {/* Kontak & Jadwal Kunjungan */}
       <section className="max-w-container mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <div className="bg-gradient-to-br from-white to-[#F8FAFC] border border-border/80 rounded-card p-8 sm:p-12 shadow-soft">
-          <div className="max-w-2xl mx-auto text-center space-y-6">
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-badge bg-[#EBF3FC] text-primary-900 text-xs sm:text-sm font-semibold shadow-xs">
-              <MessageSquare className="w-4 h-4 text-primary-700 flex-shrink-0" />
-              <span>Bingung dengan kendala kulkas atau mesin cuci Anda? Konsultasikan langsung sekarang</span>
-            </div>
+        <div className="relative overflow-hidden bg-gradient-to-br from-white via-[#FCFDFE] to-[#F8FAFC] border border-border/80 rounded-card p-8 sm:p-12 shadow-soft">
+          {/* Varied Geometric Concentric Arcs & Angle Lines (3.5% Opacity) */}
+          <div
+            className="absolute -right-16 -top-16 w-80 h-80 rounded-full border border-primary-900/10 pointer-events-none"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute -right-6 -top-6 w-60 h-60 rounded-full border border-dashed border-primary-900/10 pointer-events-none"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute -left-12 -bottom-12 w-64 h-64 rounded-full border border-primary-900/10 pointer-events-none"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.03] bg-[repeating-linear-gradient(45deg,#12345A_0,#12345A_1px,transparent_0,transparent_20px)]"
+            aria-hidden="true"
+          />
+          <div className="absolute top-4 left-6 text-primary-900/15 font-mono text-xs select-none pointer-events-none" aria-hidden="true">+</div>
+          <div className="absolute bottom-4 right-6 text-primary-900/15 font-mono text-xs select-none pointer-events-none" aria-hidden="true">+</div>
 
+          <div className="relative max-w-2xl mx-auto text-center space-y-6">
             <div className="space-y-2">
               <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
                 Jadwalkan Kunjungan Teknisi ke Lokasi Anda

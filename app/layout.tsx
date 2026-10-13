@@ -53,7 +53,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col font-sans bg-gradient-to-r from-white via-[#FCFDFE] to-[#F4F8FA] text-text relative">
         {/* Subtle Geometric Dot Pattern (3.5% Opacity) */}
         <div
-          className="fixed inset-0 pointer-events-none z-[-1] opacity-[0.035] bg-[radial-gradient(#12345A_1.2px,transparent_1.2px)] [background-size:24px_24px]"
+          className="fixed inset-0 pointer-events-none z-[-1] opacity-[0.35] bg-[radial-gradient(#12345A_1.2px,transparent_1.2px)] [background-size:24px_24px]"
           aria-hidden="true"
         />
         {/* Soft Ambient Corner Accents */}

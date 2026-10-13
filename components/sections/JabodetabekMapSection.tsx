@@ -11,7 +11,6 @@ import {
   Building2,
 } from 'lucide-react';
 import { Button, WhatsAppIcon } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
 import { RegionArea } from '@/types';
 import { generateWhatsAppUrl } from '@/lib/whatsapp';
 
@@ -36,12 +35,26 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
   };
 
   return (
-    <div className="bg-gradient-to-br from-white via-[#FCFDFE] to-[#F4F8FA] rounded-card p-6 sm:p-10 border border-border/80 shadow-soft space-y-8">
+    <div className="relative overflow-hidden bg-gradient-to-br from-white via-[#FCFDFE] to-[#F4F8FA] rounded-card p-6 sm:p-10 border border-border/80 shadow-soft space-y-8">
+      {/* Varied Geometric Matrix Grid Pattern (3.5% Opacity) */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.035] bg-[linear-gradient(to_right,#12345A_1px,transparent_1px),linear-gradient(to_bottom,#12345A_1px,transparent_1px)] [background-size:44px_44px]"
+        aria-hidden="true"
+      />
+
+      {/* Precision Crosshairs in Section Corners */}
+      <div className="absolute top-4 left-6 text-primary-900/15 font-mono text-xs select-none pointer-events-none" aria-hidden="true">+</div>
+      <div className="absolute top-4 right-6 text-primary-900/15 font-mono text-xs select-none pointer-events-none" aria-hidden="true">+</div>
+
       {/* Header Section */}
-      <div className="text-center max-w-2xl mx-auto space-y-2">
-        <Badge variant="accent">
-          Cakupan Area Panggilan
-        </Badge>
+      <div className="relative text-center max-w-2xl mx-auto space-y-2">
+        {/* Geometric Technical Index Header */}
+        <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
+          <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+          <span>04 // Rute Operasional</span>
+          <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
+        </div>
+
         <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
           Wilayah Layanan Teknisi Jabodetabek
         </h2>
@@ -51,7 +64,7 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
       </div>
 
       {/* Main Interactive Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         {/* Left Column: Daftar Kota / Region Selector */}
         <div className="lg:col-span-5 flex flex-col space-y-2.5">
           <div className="flex items-center justify-between px-1 pb-1 text-xs text-text-muted">
@@ -143,9 +156,13 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
                   {activeRegion.name}
                 </h3>
               </div>
-              <Badge variant={activeRegion.slug === 'bekasi' ? 'accent' : 'info'}>
+              <span className={`inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold ${
+                activeRegion.slug === 'bekasi'
+                  ? 'bg-amber-100 text-amber-950 border border-amber-300'
+                  : 'bg-primary-50 text-primary-900 border border-primary-200'
+              }`}>
                 {activeRegion.slug === 'bekasi' ? 'Pusat Workshop & Home Service' : 'Rute Panggilan Teknisi'}
-              </Badge>
+              </span>
             </div>
 
             {/* Deskripsi Wilayah */}
@@ -209,7 +226,7 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
       </div>
 
       {/* Bottom Information Strip */}
-      <div className="pt-4 border-t border-border/80 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-text-muted">
+      <div className="relative pt-4 border-t border-border/80 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-text-muted">
         <div className="flex items-center gap-2">
           <Building2 className="w-4 h-4 text-primary-700 flex-shrink-0" aria-hidden="true" />
           <span>Workshop: Srimahi No. 49, Tambun Utara, Bekasi</span>
