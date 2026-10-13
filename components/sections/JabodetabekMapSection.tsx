@@ -2,7 +2,14 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { MapPin, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
+import {
+  MapPin,
+  ArrowRight,
+  ShieldCheck,
+  Clock,
+  ChevronRight,
+  Building2,
+} from 'lucide-react';
 import { Button, WhatsAppIcon } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
 import { RegionArea } from '@/types';
@@ -17,10 +24,20 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
 }) => {
   const [activeSlug, setActiveSlug] = useState<string>('bekasi');
 
-  const activeRegion = regions.find((r) => r.slug === activeSlug) || regions[0];
+  const activeRegion =
+    regions.find((r) => r.slug === activeSlug) || regions[0];
+
+  const regionSubtitles: Record<string, string> = {
+    bekasi: 'Tambun Utara, Cibitung & Kota',
+    jakarta: 'Selatan, Timur, Barat, Pusat, Utara',
+    depok: 'Margonda, Cimanggis, Cinere & Sekitar',
+    tangerang: 'BSD, Bintaro, Ciputat & Kota',
+    bogor: 'Bogor Kota, Cibinong, Bojong Gede',
+  };
 
   return (
-    <div className="bg-gradient-to-b from-white via-[#F8FAFC] to-white rounded-card p-6 sm:p-10 border border-border/60 shadow-soft space-y-10">
+    <div className="bg-gradient-to-br from-white via-[#FCFDFE] to-[#F4F8FA] rounded-card p-6 sm:p-10 border border-border/80 shadow-soft space-y-8">
+      {/* Header Section */}
       <div className="text-center max-w-2xl mx-auto space-y-2">
         <Badge variant="accent">
           Cakupan Area Panggilan
@@ -29,183 +46,181 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
           Wilayah Layanan Teknisi Jabodetabek
         </h2>
         <p className="text-sm sm:text-base text-text-muted leading-relaxed">
-          Workshop kami berpusat di Tambun Utara, Kabupaten Bekasi, dengan teknisi panggilan yang menjangkau seluruh kawasan Jabodetabek sesuai jadwal konfirmasi.
+          Workshop kami berpusat di Tambun Utara, Kabupaten Bekasi, dengan teknisi panggilan yang siap datang ke rumah atau tempat usaha Anda di seluruh Jabodetabek.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        {/* Sisi Kiri: Peta Diagram Visual Interaktif Jabodetabek */}
-        <div className="lg:col-span-7 bg-white rounded-card p-6 border border-border/60 shadow-card">
-          <div className="flex items-center justify-between pb-3 border-b border-border/60 text-xs text-text-muted">
-            <span className="font-semibold text-primary-900">Peta Jaringan Rute Panggilan</span>
-            <span>Pilih titik kota untuk melihat detail</span>
+      {/* Main Interactive Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        {/* Left Column: Daftar Kota / Region Selector */}
+        <div className="lg:col-span-5 flex flex-col space-y-2.5">
+          <div className="flex items-center justify-between px-1 pb-1 text-xs text-text-muted">
+            <span className="font-semibold text-primary-900 uppercase tracking-wider text-[11px]">
+              Pilih Wilayah Anda
+            </span>
+            <span className="text-[11px]">5 Wilayah Layanan</span>
           </div>
 
-          {/* Stylized Visual Hub Map */}
-          <div className="relative py-6 sm:py-8 flex flex-col items-center justify-center min-h-[300px]">
-            {/* SVG Connecting Network Lines */}
-            <svg
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              viewBox="0 0 500 320"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              {/* Radial subtle radar waves */}
-              <circle cx="280" cy="140" r="110" stroke="#CBD5E1" strokeWidth="1" strokeDasharray="3 3" opacity="0.6" />
-              <circle cx="280" cy="140" r="60" stroke="#E2E8F0" strokeWidth="1" opacity="0.8" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
+            {regions.map((region) => {
+              const isActive = activeSlug === region.slug;
+              const isBekasi = region.slug === 'bekasi';
 
-              {/* Connector lines from Bekasi Hub to others */}
-              <path d="M 360 140 L 250 110" stroke="#10B981" strokeWidth="1.5" strokeDasharray="4 4" />
-              <path d="M 360 140 L 140 120" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4" />
-              <path d="M 360 140 L 230 210" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4" />
-              <path d="M 360 140 L 240 270" stroke="#94A3B8" strokeWidth="1.5" strokeDasharray="4 4" />
-            </svg>
+              return (
+                <button
+                  key={region.slug}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setActiveSlug(region.slug)}
+                  className={`w-full text-left p-3.5 rounded-card transition-all cursor-pointer flex items-center justify-between gap-3 min-h-[56px] focus-visible:outline-2 focus-visible:outline-focus ${
+                    isActive
+                      ? isBekasi
+                        ? 'bg-emerald-50/90 border-2 border-emerald-600 text-emerald-950 shadow-xs'
+                        : 'bg-primary-50/90 border-2 border-primary-700 text-primary-950 shadow-xs'
+                      : 'bg-white border border-border text-text hover:bg-slate-50 hover:border-slate-300'
+                  }`}
+                >
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div
+                      className={`w-9 h-9 rounded-button flex items-center justify-center flex-shrink-0 ${
+                        isActive
+                          ? isBekasi
+                            ? 'bg-emerald-600 text-white'
+                            : 'bg-primary-700 text-white'
+                          : 'bg-slate-100 text-text-muted'
+                      }`}
+                    >
+                      {isBekasi ? (
+                        <Building2 className="w-4 h-4" aria-hidden="true" />
+                      ) : (
+                        <MapPin className="w-4 h-4" aria-hidden="true" />
+                      )}
+                    </div>
+                    <div className="truncate">
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-sm text-text block truncate">
+                          {region.name}
+                        </span>
+                      </div>
+                      <span className="text-[11px] text-text-muted block truncate">
+                        {regionSubtitles[region.slug] || region.coverageNote.slice(0, 35) + '...'}
+                      </span>
+                    </div>
+                  </div>
 
-            {/* City Pinpoint Markers */}
-            <div className="relative z-10 w-full max-w-md grid grid-cols-3 gap-y-8 gap-x-3 text-center">
-              {/* Tangerang Node */}
-              <button
-                type="button"
-                aria-pressed={activeSlug === 'tangerang'}
-                onClick={() => setActiveSlug('tangerang')}
-                className={`p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
-                  activeSlug === 'tangerang'
-                    ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
-                    : 'bg-white border border-border/80 text-text hover:bg-slate-50'
-                }`}
-              >
-                <MapPin className={`w-4 h-4 mx-auto mb-1 ${activeSlug === 'tangerang' ? 'text-emerald-400' : 'text-primary-600'}`} />
-                <span className="font-bold block">Tangerang</span>
-                <span className="text-[10px] opacity-80 block">& Tangsel</span>
-              </button>
-
-              {/* Jakarta Node */}
-              <button
-                type="button"
-                aria-pressed={activeSlug === 'jakarta'}
-                onClick={() => setActiveSlug('jakarta')}
-                className={`p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
-                  activeSlug === 'jakarta'
-                    ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
-                    : 'bg-white border border-border/80 text-text hover:bg-slate-50'
-                }`}
-              >
-                <MapPin className={`w-4 h-4 mx-auto mb-1 ${activeSlug === 'jakarta' ? 'text-emerald-400' : 'text-primary-600'}`} />
-                <span className="font-bold block">DKI Jakarta</span>
-                <span className="text-[10px] opacity-80 block">Selatan, Timur, dll.</span>
-              </button>
-
-              {/* Bekasi Node (Pusat Workshop) */}
-              <button
-                type="button"
-                aria-pressed={activeSlug === 'bekasi'}
-                onClick={() => setActiveSlug('bekasi')}
-                className={`p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer relative ${
-                  activeSlug === 'bekasi'
-                    ? 'bg-emerald-700 text-white shadow-whatsapp scale-105 ring-2 ring-emerald-500'
-                    : 'bg-emerald-50 border border-emerald-300 text-emerald-900 hover:bg-emerald-100/70'
-                }`}
-              >
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-400 text-amber-950 tracking-tight">
-                  Workshop
-                </span>
-                <MapPin className={`w-4 h-4 mx-auto mb-1 ${activeSlug === 'bekasi' ? 'text-white' : 'text-emerald-700'}`} />
-                <span className="font-bold block">Bekasi</span>
-                <span className="text-[10px] opacity-90 block">Tambun Utara</span>
-              </button>
-
-              {/* Depok Node */}
-              <button
-                type="button"
-                aria-pressed={activeSlug === 'depok'}
-                onClick={() => setActiveSlug('depok')}
-                className={`col-start-2 p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
-                  activeSlug === 'depok'
-                    ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
-                    : 'bg-white border border-border/80 text-text hover:bg-slate-50'
-                }`}
-              >
-                <MapPin className={`w-4 h-4 mx-auto mb-1 ${activeSlug === 'depok' ? 'text-emerald-400' : 'text-primary-600'}`} />
-                <span className="font-bold block">Kota Depok</span>
-                <span className="text-[10px] opacity-80 block">Margonda & Sekitar</span>
-              </button>
-
-              {/* Bogor Node */}
-              <button
-                type="button"
-                aria-pressed={activeSlug === 'bogor'}
-                onClick={() => setActiveSlug('bogor')}
-                className={`col-start-3 p-3 min-h-[44px] rounded-card transition-all text-xs focus-visible:outline-2 focus-visible:outline-focus cursor-pointer ${
-                  activeSlug === 'bogor'
-                    ? 'bg-primary-900 text-white shadow-md scale-105 ring-2 ring-primary-700'
-                    : 'bg-white border border-border/80 text-text hover:bg-slate-50'
-                }`}
-              >
-                <MapPin className={`w-4 h-4 mx-auto mb-1 ${activeSlug === 'bogor' ? 'text-emerald-400' : 'text-primary-600'}`} />
-                <span className="font-bold block">Bogor</span>
-                <span className="text-[10px] opacity-80 block">& Cibinong</span>
-              </button>
-            </div>
+                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                    {isBekasi ? (
+                      <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                        Pusat Workshop
+                      </span>
+                    ) : (
+                      <span className="px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-700 hidden sm:inline">
+                        Panggilan
+                      </span>
+                    )}
+                    <ChevronRight
+                      className={`w-4 h-4 transition-transform ${
+                        isActive ? 'text-primary-700 translate-x-0.5' : 'text-slate-400'
+                      }`}
+                    />
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Sisi Kanan: Detail Wilayah Terpilih */}
-        <div className="lg:col-span-5 bg-white rounded-card p-6 sm:p-8 border border-border/60 shadow-card space-y-5">
-          <div className="flex items-center justify-between pb-3 border-b border-border/60">
-            <div>
-              <span className="text-xs font-semibold text-emerald-800 block">
-                Wilayah Terpilih
-              </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-primary-900">
-                {activeRegion.name}
-              </h3>
-            </div>
-            <Badge variant={activeRegion.slug === 'bekasi' ? 'accent' : 'info'}>
-              {activeRegion.slug === 'bekasi' ? 'Pusat Operasional' : 'Rute Panggilan'}
-            </Badge>
-          </div>
-
-          <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
-            {activeRegion.coverageNote}
-          </p>
-
-          <div className="space-y-2">
-            <span className="text-xs font-bold text-primary-900 block">
-              Kecamatan yang rutin dilayani:
-            </span>
-            <div className="flex flex-wrap gap-1.5">
-              {activeRegion.subDistricts.slice(0, 4).map((sub, idx) => (
-                <span
-                  key={idx}
-                  className="px-2 py-1 rounded-badge bg-[#F1F5F9] text-text text-[11px] font-medium"
-                >
-                  {sub}
+        {/* Right Column: Panel Detail Wilayah Terpilih */}
+        <div className="lg:col-span-7 bg-white rounded-card p-6 sm:p-7 border border-border shadow-card flex flex-col justify-between space-y-6">
+          <div className="space-y-4">
+            {/* Header Detail */}
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5 border-b border-border/80">
+              <div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-primary-700 block">
+                  Informasi Wilayah Terpilih
                 </span>
-              ))}
+                <h3 className="text-xl sm:text-2xl font-bold text-primary-900">
+                  {activeRegion.name}
+                </h3>
+              </div>
+              <Badge variant={activeRegion.slug === 'bekasi' ? 'accent' : 'info'}>
+                {activeRegion.slug === 'bekasi' ? 'Pusat Workshop & Home Service' : 'Rute Panggilan Teknisi'}
+              </Badge>
             </div>
+
+            {/* Deskripsi Wilayah */}
+            <p className="text-sm text-text-muted leading-relaxed">
+              {activeRegion.coverageNote}
+            </p>
+
+            {/* Kecamatan yang Rutin Dilayani */}
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-primary-900 block">
+                Area & Kecamatan yang Rutin Dilayani:
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {activeRegion.subDistricts.map((sub, idx) => (
+                  <span
+                    key={idx}
+                    className="px-2.5 py-1 rounded-badge bg-surface-muted border border-border/60 text-text text-xs font-medium"
+                  >
+                    {sub}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Catatan Operasional */}
+            {activeRegion.localOperationalNote && (
+              <div className="p-3.5 rounded-card bg-primary-50/60 border border-primary-100 text-xs text-primary-900 flex items-start gap-2.5">
+                <Clock className="w-4 h-4 text-primary-700 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <div className="leading-relaxed">
+                  <strong className="font-semibold block mb-0.5">Catatan Jadwal Teknisi:</strong>
+                  {activeRegion.localOperationalNote}
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="pt-3 border-t border-border/60 flex flex-col gap-2.5">
+          {/* Action CTAs */}
+          <div className="pt-4 border-t border-border/80 space-y-2.5">
             <Button
               variant="whatsapp"
               size="md"
               href={generateWhatsAppUrl({ region: activeRegion.name })}
               isExternal
-              className="w-full gap-2"
+              className="w-full gap-2 shadow-whatsapp hover:shadow-whatsapp-hover"
             >
               <WhatsAppIcon className="w-4 h-4 flex-shrink-0" />
-              <span>Jadwalkan Teknisi ke {activeRegion.name}</span>
+              <span>Jadwalkan Kunjungan ke {activeRegion.name}</span>
             </Button>
 
-            <Link
-              href={`/wilayah/${activeRegion.slug}`}
-              className="text-xs font-semibold text-primary-700 hover:text-primary-900 text-center inline-flex items-center justify-center gap-1 py-1"
-            >
-              <span>Lihat info lengkap area {activeRegion.name}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            <div className="text-center">
+              <Link
+                href={`/wilayah/${activeRegion.slug}`}
+                className="text-xs font-semibold text-primary-700 hover:text-primary-900 inline-flex items-center gap-1.5 py-1 transition-colors"
+              >
+                <span>Lihat informasi panduan area {activeRegion.name}</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Bottom Information Strip */}
+      <div className="pt-4 border-t border-border/80 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-text-muted">
+        <div className="flex items-center gap-2">
+          <Building2 className="w-4 h-4 text-primary-700 flex-shrink-0" aria-hidden="true" />
+          <span>Workshop: Srimahi No. 49, Tambun Utara, Bekasi</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <Clock className="w-4 h-4 text-primary-700 flex-shrink-0" aria-hidden="true" />
+          <span>Jadwal fleksibel & konfirmasi langsung di WhatsApp</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <ShieldCheck className="w-4 h-4 text-emerald-600 flex-shrink-0" aria-hidden="true" />
+          <span>Garansi pekerjaan & suku cadang 14 - 30 hari</span>
         </div>
       </div>
     </div>

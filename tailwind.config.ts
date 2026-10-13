@@ -56,11 +56,15 @@ const config: Config = {
         button: '10px',
         badge: '8px',
       },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-heading)', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+      },
       boxShadow: {
         card: '0 8px 30px -4px rgba(18, 52, 90, 0.05), 0 2px 6px -1px rgba(18, 52, 90, 0.03)',
         hover: '0 16px 36px -6px rgba(18, 52, 90, 0.09), 0 4px 12px -2px rgba(18, 52, 90, 0.04)',
-        whatsapp: '0 4px 14px 0 rgba(16, 185, 129, 0.28)',
-        'whatsapp-hover': '0 8px 20px 0 rgba(16, 185, 129, 0.35)',
+        whatsapp: '0 2px 6px 0 rgba(4, 120, 87, 0.12), 0 1px 2px 0 rgba(4, 120, 87, 0.06)',
+        'whatsapp-hover': '0 4px 10px 0 rgba(4, 120, 87, 0.16)',
         ghost: '0 2px 8px 0 rgba(18, 52, 90, 0.04)',
         soft: '0 10px 30px rgba(0, 0, 0, 0.04)',
       },
