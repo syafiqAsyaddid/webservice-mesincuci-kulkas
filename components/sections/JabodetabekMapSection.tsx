@@ -48,13 +48,6 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
 
       {/* Header Section */}
       <div className="relative text-center max-w-2xl mx-auto space-y-2">
-        {/* Geometric Technical Index Header */}
-        <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
-          <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-          <span>04 // Rute Operasional</span>
-          <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-        </div>
-
         <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
           Wilayah Layanan Teknisi Jabodetabek
         </h2>
@@ -148,14 +141,9 @@ export const JabodetabekMapSection: React.FC<JabodetabekMapSectionProps> = ({
           <div className="space-y-4">
             {/* Header Detail */}
             <div className="flex flex-wrap items-center justify-between gap-2 pb-3.5 border-b border-border/80">
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-primary-700 block">
-                  Informasi Wilayah Terpilih
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-primary-900">
-                  {activeRegion.name}
-                </h3>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-primary-900">
+                {activeRegion.name}
+              </h3>
               <span className={`inline-flex items-center px-2.5 py-1 rounded text-xs font-semibold ${
                 activeRegion.slug === 'bekasi'
                   ? 'bg-amber-100 text-amber-950 border border-amber-300'

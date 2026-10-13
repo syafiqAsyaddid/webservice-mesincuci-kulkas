@@ -137,13 +137,6 @@ export default function HomePage() {
         />
 
         <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-          {/* Geometric Technical Index Header */}
-          <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
-            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-            <span>01 // Spesialisasi Perangkat</span>
-            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-          </div>
-
           <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
             Layanan Perbaikan yang Kami Sediakan
           </h2>
@@ -175,13 +168,6 @@ export default function HomePage() {
 
         <div className="relative max-w-container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            {/* Geometric Technical Index Header */}
-            <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
-              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-              <span>02 // Prosedur Panggilan</span>
-              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-            </div>
-
             <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
               Alur Layanan Panggilan Teknisi
             </h2>
@@ -280,13 +266,6 @@ export default function HomePage() {
         />
 
         <div className="text-center max-w-2xl mx-auto mb-8 space-y-2">
-          {/* Geometric Technical Index Header */}
-          <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
-            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-            <span>03 // Diagnosa Awal</span>
-            <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-          </div>
-
           <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
             Kerusakan yang Sering Ditangani
           </h2>
@@ -313,13 +292,6 @@ export default function HomePage() {
 
         <div className="max-w-3xl mx-auto space-y-8">
           <div className="text-center space-y-2">
-            {/* Geometric Technical Index Header */}
-            <div className="flex items-center justify-center gap-2 text-xs font-mono font-semibold tracking-wider text-primary-700/80 uppercase">
-              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-              <span>05 // Transparansi Layanan</span>
-              <span className="w-5 h-[1.5px] bg-primary-600/40" aria-hidden="true" />
-            </div>
-
             <h2 className="text-2xl sm:text-3xl font-extrabold text-primary-900 tracking-tight">
               Pertanyaan yang Sering Diajukan
             </h2>
