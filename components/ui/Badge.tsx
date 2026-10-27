@@ -16,17 +16,17 @@ export const Badge: React.FC<BadgeProps> = ({
   icon,
 }) => {
   const variantClasses = {
-    default: 'bg-[#EBF3FC] text-primary-800 border-transparent',
-    success: 'bg-[#F0FDF4] text-emerald-800 border-transparent',
-    warning: 'bg-[#FFFBEB] text-amber-800 border-transparent',
-    info: 'bg-[#F0F9FF] text-sky-800 border-transparent',
-    accent: 'bg-[#FEF3C7] text-amber-900 border-transparent',
-    neutral: 'bg-surface-tint text-text-muted border-transparent',
+    default: 'bg-slate-50 text-primary-900 border-border',
+    success: 'bg-emerald-50 text-emerald-900 border-emerald-200',
+    warning: 'bg-amber-50 text-amber-950 border-amber-200',
+    info: 'bg-sky-50 text-sky-950 border-sky-200',
+    accent: 'bg-amber-50 text-amber-950 border-amber-200',
+    neutral: 'bg-slate-50 text-slate-700 border-border',
   }[variant];
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-badge border ${variantClasses} ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wider rounded-sm border ${variantClasses} ${className}`}
     >
       {icon && <span className="flex-shrink-0 text-current">{icon}</span>}
       <span>{children}</span>

@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { priorityIssues } from '@/lib/content/services';
 import { regionsData } from '@/lib/content/regions';
+import { SITE_URL } from '@/lib/seo';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://servicekulkas-mesincuci.id';
+  const baseUrl = SITE_URL;
   const currentDate = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -20,10 +21,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/estimasi-biaya`,
+      url: `${baseUrl}/layanan/service-kulkas`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/layanan/service-mesin-cuci`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/wilayah`,

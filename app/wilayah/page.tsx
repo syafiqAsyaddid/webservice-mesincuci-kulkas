@@ -1,29 +1,30 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  ChevronRight,
-  MapPin,
-  ArrowRight,
-  MessageSquare,
-  Clock,
-  ShieldCheck,
-} from 'lucide-react';
-import { Card } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
-import { Badge } from '@/components/ui/Badge';
+import { ChevronRight, ArrowRight } from 'lucide-react';
+import { Button, WhatsAppIcon } from '@/components/ui/Button';
+import { WilayahExplorer } from '@/components/sections/WilayahExplorer';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { regionsData } from '@/lib/content/regions';
 import { generateWhatsAppUrl } from '@/lib/whatsapp';
+import { buildPageMetadata, buildBreadcrumbJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Area Layanan Service Kulkas & Mesin Cuci Jabodetabek',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Area Layanan Service Kulkas & Mesin Cuci - Bekasi, Jaktim, Jaksel, Depok',
   description:
-    'Cakupan wilayah kunjungan teknisi panggilan untuk service kulkas dan mesin cuci di Jakarta, Bogor, Depok, Tangerang, dan Bekasi.',
-};
+    'Cakupan wilayah kunjungan teknisi panggilan serta antar-jemput jual beli kulkas dan mesin cuci di Kota & Kab. Bekasi, Jakarta Timur, Jakarta Selatan, dan Kota Depok.',
+  path: '/wilayah',
+});
 
 export default function WilayahPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Beranda', path: '/' },
+    { name: 'Area Layanan', path: '/wilayah' },
+  ]);
+
   return (
-    <div className="py-8 sm:py-12 space-y-12 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="py-10 sm:py-14 space-y-14 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <JsonLd data={breadcrumbJsonLd} />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="text-sm text-text-muted">
         <ol className="flex items-center space-x-2">
@@ -44,135 +45,114 @@ export default function WilayahPage() {
         </ol>
       </nav>
 
-      {/* Header */}
-      <div className="space-y-4 max-w-3xl">
-        <h1 className="text-3xl sm:text-4xl font-bold text-primary-900 tracking-tight">
-          Cakupan Area Layanan Service Panggilan
-        </h1>
-        <p className="text-base sm:text-lg text-text-muted leading-relaxed">
-          Teknisi kami siap datang ke rumah, apartemen, kos, maupun ruko tempat usaha Anda di wilayah Jabodetabek. Pilih kota Anda di bawah untuk melihat rincian kecamatan dan jadwal rute kunjungan.
-        </p>
-      </div>
-
-      {/* Grid Kota / Wilayah */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {regionsData.map((region) => (
-          <Card key={region.slug} className="flex flex-col justify-between">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between gap-2">
-                <Badge variant="info">{region.province}</Badge>
-                <span className="text-xs text-emerald-700 font-medium flex items-center gap-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-600 inline-block" />
-                  Aktif Melayani
-                </span>
-              </div>
-
-              <div>
-                <h2 className="text-xl font-bold text-primary-900 flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-primary-700 flex-shrink-0" aria-hidden="true" />
-                  <span>{region.name}</span>
-                </h2>
-                <p className="text-sm text-text-muted mt-2 leading-relaxed">
-                  {region.coverageNote}
-                </p>
-              </div>
-
-              <div className="pt-2 border-t border-border space-y-1.5 text-xs text-text">
-                <span className="font-semibold text-primary-900 block">
-                  Area / Kecamatan Utama:
-                </span>
-                <ul className="space-y-1 text-text-muted">
-                  {region.subDistricts.slice(0, 3).map((sub, idx) => (
-                    <li key={idx} className="flex items-start gap-1.5">
-                      <span className="w-1 h-1 rounded-full bg-primary-600 mt-1.5 flex-shrink-0" />
-                      <span>{sub}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="pt-6 mt-6 border-t border-border flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-              <Link
-                href={`/wilayah/${region.slug}`}
-                className="inline-flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-900 focus-visible:ring-1 focus-visible:ring-focus rounded-sm py-1"
-              >
-                <span>Info Jadwal & Detail</span>
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </Link>
-
-              <Button
-                variant="whatsapp"
-                size="sm"
-                href={generateWhatsAppUrl({ region: region.name })}
-                isExternal
-                className="gap-1.5 text-xs"
-              >
-                <MessageSquare className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>Pesan di Area Ini</span>
-              </Button>
-            </div>
-          </Card>
-        ))}
-      </div>
-
-      {/* Ketentuan Panggilan & Operasional */}
-      <section className="bg-primary-50 border border-primary-100 rounded-card p-6 sm:p-10 space-y-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-primary-900">
-          Prosedur Kunjungan Teknisi di Setiap Wilayah
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 font-semibold text-primary-900">
-              <Clock className="w-4 h-4 text-primary-700" />
-              <span>1. Konfirmasi Rute Harian</span>
-            </div>
-            <p className="text-text-muted leading-relaxed">
-              Jadwal kunjungan disesuaikan dengan posisi teknisi mobile terdekat agar waktu tempuh lebih efisien.
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 font-semibold text-primary-900">
-              <MapPin className="w-4 h-4 text-primary-700" />
-              <span>2. Share Location Alamat</span>
-            </div>
-            <p className="text-text-muted leading-relaxed">
-              Kirimkan pin lokasi WhatsApp atau patokan alamat yang jelas untuk memudahkan teknisi menemukan lokasi rumah Anda.
-            </p>
-          </div>
-
-          <div className="space-y-2">
-            <div className="flex items-center gap-2 font-semibold text-primary-900">
-              <ShieldCheck className="w-4 h-4 text-primary-700" />
-              <span>3. Izin Akses Lingkungan</span>
-            </div>
-            <p className="text-text-muted leading-relaxed">
-              Untuk perumahan dengan pos keamanan atau apartemen, teknisi kami mengikuti prosedur lapor tamu yang berlaku di lokasi Anda.
-            </p>
-          </div>
+      {/* Asymmetric Editorial Page Header */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end">
+        <div className="lg:col-span-7 space-y-3">
+          <h1 className="text-3xl sm:text-5xl font-extrabold text-primary-900 tracking-tight leading-[1.12]">
+            Cakupan Area Layanan<br />
+            <span className="text-primary-700">&amp; Rute Kunjungan Teknisi.</span>
+          </h1>
+          <p className="text-base sm:text-lg text-text-muted leading-relaxed">
+            Armada teknisi kami melayani panggilan pemeriksaan, perbaikan di tempat, serta pengantaran unit jual-beli dan tukar tambah khusus untuk wilayah Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok.
+          </p>
         </div>
+
+        <div className="lg:col-span-5 lg:border-l lg:border-border lg:pl-8 space-y-2 text-xs sm:text-sm text-text-muted">
+          <p className="font-semibold text-primary-900">
+            Fokus 4 Wilayah untuk Ketepatan Waktu
+          </p>
+          <p className="leading-relaxed">
+            Pembatasan rute operasional memastikan teknisi datang tepat sesuai jadwal yang disepakati dan ketepatan penanganan perangkat Anda.
+          </p>
+          <Link
+            href="/layanan"
+            className="min-h-[44px] inline-flex items-center gap-1.5 text-xs font-bold text-primary-700 hover:text-primary-900 pt-1 group"
+          >
+            <span>Telusuri katalog layanan &amp; kerusakan</span>
+            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
+      </div>
+
+      {/* Interactive Hub Spotlight & Regional Route Explorer */}
+      <WilayahExplorer regions={regionsData} />
+
+      {/* Prosedur Kunjungan Lapangan (Editorial Process Table - No Generic Icon Cards) */}
+      <section className="bg-[#F8FAFC] border border-border rounded-card p-6 sm:p-10 space-y-8">
+        <div className="max-w-2xl space-y-2">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-primary-900 tracking-tight">
+            Standar Operasional Kunjungan ke Lokasi Anda
+          </h2>
+          <p className="text-xs sm:text-sm text-text-muted leading-relaxed">
+            Setiap jadwal kunjungan mengikuti tahapan koordinasi berikut agar pemeriksaan di rumah, apartemen, maupun tempat usaha berjalan lancar.
+          </p>
+        </div>
+
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-4 border-t border-border">
+          <li className="space-y-2">
+            <div className="flex items-center gap-3">
+              <span className="w-7 h-7 rounded bg-primary-900 text-white text-xs font-bold tabular-nums flex items-center justify-center flex-shrink-0">
+                1
+              </span>
+              <h3 className="text-sm sm:text-base font-bold text-primary-900">
+                Penjadwalan Rute Terdekat
+              </h3>
+            </div>
+            <p className="text-xs sm:text-sm text-text-muted leading-relaxed pl-10">
+              Admin memetakan posisi teknisi mobile terdekat dengan kecamatan Anda serta mengonfirmasi jam tiba melalui WhatsApp.
+            </p>
+          </li>
+
+          <li className="space-y-2 md:border-l md:border-border md:pl-6">
+            <div className="flex items-center gap-3">
+              <span className="w-7 h-7 rounded bg-primary-900 text-white text-xs font-bold tabular-nums flex items-center justify-center flex-shrink-0">
+                2
+              </span>
+              <h3 className="text-sm sm:text-base font-bold text-primary-900">
+                Konfirmasi Titik &amp; Akses Masuk
+              </h3>
+            </div>
+            <p className="text-xs sm:text-sm text-text-muted leading-relaxed pl-10">
+              Untuk klaster perumahan, apartemen, atau ruko komersial, teknisi mematuhi prosedur lapor keamanan dan perizinan kerja gedung.
+            </p>
+          </li>
+
+          <li className="space-y-2 md:border-l md:border-border md:pl-6">
+            <div className="flex items-center gap-3">
+              <span className="w-7 h-7 rounded bg-primary-900 text-white text-xs font-bold tabular-nums flex items-center justify-center flex-shrink-0">
+                3
+              </span>
+              <h3 className="text-sm sm:text-base font-bold text-primary-900">
+                Inspeksi &amp; Pengerjaan di Tempat
+              </h3>
+            </div>
+            <p className="text-xs sm:text-sm text-text-muted leading-relaxed pl-10">
+              Pengecekan dan perbaikan dilakukan langsung di lokasi secara terbuka tanpa perlu membawa unit keluar rumah.
+            </p>
+          </li>
+        </ol>
       </section>
 
-      {/* Bottom CTA for Unlisted Area */}
-      <div className="bg-surface rounded-card p-6 sm:p-8 border border-border shadow-card flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div className="space-y-1 text-center sm:text-left">
-          <h3 className="text-lg font-bold text-primary-900">
-            Kecamatan atau Lokasi Anda Belum Terdaftar?
-          </h3>
-          <p className="text-sm text-text-muted leading-relaxed">
-            Tanyakan langsung kepada customer service kami di WhatsApp. Kami akan memeriksa rute terdekat ke titik Anda.
+      {/* Bottom Direct Dispatch Banner */}
+      <div className="bg-[#0E2A47] text-white rounded-card p-6 sm:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="space-y-2 max-w-xl">
+          <h2 className="text-xl sm:text-2xl font-extrabold text-white">
+            Ingin Memastikan Ketersediaan Jadwal Hari Ini?
+          </h2>
+          <p className="text-sm text-slate-300 leading-relaxed">
+            Kirimkan nama jalan atau kecamatan tempat tinggal Anda di Bekasi, Jakarta Timur, Jakarta Selatan, atau Depok melalui WhatsApp untuk konfirmasi instan.
           </p>
         </div>
         <Button
           variant="whatsapp"
-          size="md"
+          size="lg"
           href={generateWhatsAppUrl()}
           isExternal
-          className="gap-2 flex-shrink-0"
+          data-inpage-whatsapp
+          className="gap-2.5 w-full md:w-auto flex-shrink-0"
         >
-          <MessageSquare className="w-4 h-4" aria-hidden="true" />
-          <span>Tanyakan Ketersediaan Area</span>
+          <WhatsAppIcon className="w-5 h-5 flex-shrink-0" />
+          <span>Tanyakan Jadwal Rute Anda</span>
         </Button>
       </div>
     </div>

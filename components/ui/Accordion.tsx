@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 export interface AccordionItem {
   id: string;
@@ -23,6 +24,10 @@ export const Accordion: React.FC<AccordionProps> = ({
   const [openIds, setOpenIds] = useState<string[]>([]);
 
   const toggleItem = (id: string) => {
+    const isOpening = !openIds.includes(id);
+    if (isOpening) {
+      trackEvent('faq_open', { faq_id: id });
+    }
     if (allowMultiple) {
       setOpenIds((prev) =>
         prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
@@ -43,7 +48,7 @@ export const Accordion: React.FC<AccordionProps> = ({
               onClick={() => toggleItem(item.id)}
               aria-expanded={isOpen}
               aria-controls={`accordion-content-${item.id}`}
-              className="w-full flex items-center justify-between text-left font-medium text-text hover:text-primary-800 focus-visible:ring-2 focus-visible:ring-focus rounded-sm py-1 transition-colors"
+              className="w-full min-h-[44px] flex items-center justify-between text-left font-semibold text-text hover:text-primary-900 focus-visible:outline-2 focus-visible:outline-focus rounded py-2.5 transition-colors cursor-pointer"
             >
               <span className="text-base sm:text-lg pr-4">{item.title}</span>
               <ChevronDown

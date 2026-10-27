@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { MapPin, Phone, MessageSquare } from 'lucide-react';
+import { MapPin, Phone } from 'lucide-react';
 import { businessInfo } from '@/lib/content/business';
 
 export const Footer: React.FC = () => {
@@ -10,50 +10,69 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           {/* Kolom 1: Profil Layanan & Alamat */}
           <div className="md:col-span-1 space-y-3">
-            <h2 className="text-lg font-bold text-white">{businessInfo.name}</h2>
+            <p className="text-lg font-bold text-white">{businessInfo.name}</p>
             <p className="text-sm text-primary-100/90 leading-relaxed">
               {businessInfo.tagline}
             </p>
             <div className="pt-2 space-y-2 text-xs text-primary-100/80">
               <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
+                <MapPin
+                  className="w-4 h-4 text-accent-500 flex-shrink-0 mt-0.5"
+                  aria-hidden="true"
+                />
                 <span className="leading-relaxed">{businessInfo.address}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-accent-500 flex-shrink-0" aria-hidden="true" />
-                <span>{businessInfo.displayPhone}</span>
+                <Phone
+                  className="w-4 h-4 text-accent-500 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <a
+                  href={`tel:${businessInfo.whatsappNumber}`}
+                  className="hover:text-white underline-offset-2 hover:underline py-1"
+                >
+                  {businessInfo.displayPhone}
+                </a>
               </div>
             </div>
           </div>
 
           {/* Kolom 2: Layanan Utama */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-3">
-              Layanan Perbaikan
-            </h3>
+            <p className="text-sm font-semibold text-white mb-3">
+              Layanan Spesialis
+            </p>
             <ul className="space-y-2 text-sm text-primary-100">
               <li>
                 <Link
-                  href="/layanan"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  href="/layanan/service-kulkas"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
-                  Service Kulkas 1 & 2 Pintu
+                  Service Kulkas, Freezer &amp; Showcase
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/layanan/service-mesin-cuci"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
+                >
+                  Service Mesin Cuci Segala Jenis
                 </Link>
               </li>
               <li>
                 <Link
                   href="/layanan"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
-                  Service Mesin Cuci Top & Front Loading
+                  Katalog Gejala &amp; Kerusakan
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/estimasi-biaya"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  href="/layanan#jual-beli-tukar-tambah"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
-                  Kalkulator Estimasi Biaya
+                  Tukar Tambah Baru &amp; Bekas
                 </Link>
               </li>
             </ul>
@@ -61,40 +80,40 @@ export const Footer: React.FC = () => {
 
           {/* Kolom 3: Cakupan Wilayah */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-3">
+            <p className="text-sm font-semibold text-white mb-3">
               Area Panggilan
-            </h3>
+            </p>
             <ul className="space-y-2 text-sm text-primary-100">
               <li>
                 <Link
                   href="/wilayah/bekasi"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
-                  Tambun, Cibitung & Bekasi
+                  Kota &amp; Kab. Bekasi (Pusat Workshop)
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/wilayah/jakarta"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  href="/wilayah/jakarta-timur"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
-                  DKI Jakarta (Selatan, Timur, Pusat, dll.)
+                  Jakarta Timur
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/wilayah/jakarta-selatan"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
+                >
+                  Jakarta Selatan
                 </Link>
               </li>
               <li>
                 <Link
                   href="/wilayah/depok"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
-                  Kota Depok & Sekitarnya
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/wilayah/tangerang"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
-                >
-                  Tangerang & Tangsel (BSD, Bintaro)
+                  Kota Depok
                 </Link>
               </li>
             </ul>
@@ -102,22 +121,30 @@ export const Footer: React.FC = () => {
 
           {/* Kolom 4: Informasi & Legal */}
           <div>
-            <h3 className="text-sm font-semibold text-white mb-3">
-              Informasi & Legal
-            </h3>
+            <p className="text-sm font-semibold text-white mb-3">
+              Informasi &amp; Legal
+            </p>
             <ul className="space-y-2 text-sm text-primary-100">
               <li>
                 <Link
                   href="/tentang-kami"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
                   Tentang Layanan Kami
                 </Link>
               </li>
               <li>
                 <Link
+                  href="/kontak"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
+                >
+                  Kontak &amp; Jadwal Teknisi
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/faq"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
                   Tanya Jawab (FAQ)
                 </Link>
@@ -125,7 +152,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/kebijakan-privasi"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
                   Kebijakan Privasi
                 </Link>
@@ -133,7 +160,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   href="/ketentuan"
-                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm"
+                  className="hover:text-white transition-colors focus-visible:ring-1 focus-visible:ring-white rounded-sm py-0.5 inline-block"
                 >
                   Ketentuan Layanan
                 </Link>

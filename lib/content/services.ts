@@ -5,37 +5,105 @@ export const servicesData: ServiceItem[] = [
     id: 'srv-kulkas',
     slug: 'service-kulkas',
     category: 'kulkas',
-    name: 'Service Kulkas',
+    name: 'Service Kulkas, Freezer & Showcase',
     shortDescription:
-      'Penanganan perbaikan kulkas 1 pintu, 2 pintu, side-by-side, dan inverter untuk kebutuhan rumah maupun usaha.',
+      'Penanganan perbaikan dan perawatan kulkas 1 pintu, 2 pintu, side-by-side, freezer box/standing, showcase pendingin minuman, dan chiller komersial maupun rumah tangga.',
     symptoms: [
-      'Kulkas tidak dingin sama sekali',
+      'Kulkas, freezer, atau showcase tidak dingin sama sekali',
       'Bagian freezer beku tetapi chiller bawah tidak dingin',
       'Kulkas mati total atau korslet saat dinyalakan',
-      'Kebocoran air di bawah atau di dalam kabinet',
-      'Kompresor berdengung keras atau sering mati hidup',
+      'Kebocoran air di bawah atau di dalam kabinet pendingin',
+      'Kompresor berdengung keras, panas abnormal, atau sering mati-hidup',
     ],
-    ctaText: 'Konsultasi Kerusakan Kulkas',
-    imagePath: '/images/service-kulkas.jpg',
+    ctaText: 'Pesan Teknisi Pendingin',
+    imagePath: '/images/kulkas-manifold-kompresor.jpg',
+    galleryImages: [
+      {
+        src: '/images/kulkas-manifold-kompresor.jpg',
+        alt: 'Pengukuran tekanan freon pada kompresor kulkas menggunakan manifold gauge',
+        caption: 'Pengukuran tekanan kerja kompresor & sirkuit freon dengan manifold gauge',
+      },
+      {
+        src: '/images/kulkas-vakum-kompresor.jpg',
+        alt: 'Teknisi memeriksa kompresor belakang kulkas dan pompa vakum',
+        caption: 'Pengecekan unit kompresor belakang & proses pemvakuman jalur pendingin',
+      },
+      {
+        src: '/images/kulkas-cek-kabinet-dalam.jpg',
+        alt: 'Pemeriksaan jalur udara evaporator di ruang dalam kulkas dua pintu',
+        caption: 'Inspeksi sirkulasi udara dingin & sensor suhu di dalam kabinet kulkas',
+      },
+      {
+        src: '/images/kulkas-cek-jalur-belakang.jpg',
+        alt: 'Pemeriksaan kelistrikan dan pipa kondensor di bagian bawah belakang kulkas',
+        caption: 'Pengecekan jalur kelistrikan relay, overload, dan bak penampung belakang',
+      },
+    ],
   },
   {
     id: 'srv-mesin-cuci',
     slug: 'service-mesin-cuci',
     category: 'mesin-cuci',
-    name: 'Service Mesin Cuci',
+    name: 'Service Mesin Cuci Segala Jenis',
     shortDescription:
-      'Perbaikan mesin cuci bukaan atas (top loading), bukaan depan (front loading), dan 2 tabung oleh teknisi panggilan.',
+      'Perbaikan segala jenis mesin cuci: bukaan depan (front loading), bukaan atas (top loading 1 tabung), 2 tabung (twin tub), mesin pengering (dryer), serta mesin cuci komersial/laundry.',
     symptoms: [
       'Tabung tidak mau berputar atau putaran lemah saat mencuci/memeras',
       'Air tidak mau keluar saat proses pengeringan (drain error)',
-      'Mesin mati total atau lampu display berkedip error',
-      'Air terus masuk ke tabung tanpa henti',
-      'Getaran atau bunyi berisik keras saat proses peras (spin)',
+      'Mesin mati total atau lampu display indikator berkedip error',
+      'Air terus mengalir masuk ke tabung tanpa henti',
+      'Getaran keras atau bunyi berisik kasar saat proses peras (spin)',
     ],
-    ctaText: 'Konsultasi Kerusakan Mesin Cuci',
-    imagePath: '/images/service-mesincuci.jpg',
+    ctaText: 'Pesan Teknisi Mesin Cuci',
+    imagePath: '/images/mesincuci-bongkar-unit.jpg',
+    galleryImages: [
+      {
+        src: '/images/mesincuci-bongkar-unit.jpg',
+        alt: 'Teknisi membongkar bodi mesin cuci front loading di lokasi pelanggan',
+        caption: 'Pembongkaran unit mesin cuci langsung di rumah pelanggan untuk cek fisik',
+      },
+      {
+        src: '/images/mesincuci-lepas-casing.jpg',
+        alt: 'Pelepasan panel depan mesin cuci bukaan depan untuk akses drum dan karet pintu',
+        caption: 'Akses langsung ke tabung dalam, seal karet pintu, dan pompa pembuangan',
+      },
+      {
+        src: '/images/service-mesincuci.jpg',
+        alt: 'Pemeriksaan komponen mesin cuci bukaan depan oleh teknisi',
+        caption: 'Pengujian putaran motor penggerak dan keseimbangan tabung pencuci',
+      },
+    ],
   },
 ];
+
+export interface TradeInServiceInfo {
+  title: string;
+  subtitle: string;
+  description: string;
+  benefits: string[];
+  supportedAppliances: string[];
+}
+
+export const tradeInInfo: TradeInServiceInfo = {
+  title: 'Menerima Tukar Tambah Baru & Bekas Kulkas & Mesin Cuci',
+  subtitle: 'Terima unit bekas segala kondisi, tukar tambah unit baru & seken siap pakai',
+  description:
+    'Kami menerima tukar tambah baru dan bekas serta melayani jual beli kulkas (1 pintu, 2 pintu, side-by-side, freezer, showcase, chiller) dan mesin cuci segala jenis. Seluruh unit siap pakai telah melalui uji kelayakan fungsi menyeluruh oleh teknisi kami.',
+  benefits: [
+    'Menerima tukar tambah unit baru maupun bekas dengan penaksiran terbuka',
+    'Tersedia unit baru & seken siap pakai berkualitas yang telah lulus uji teknisi',
+    'Pengantaran dan pengambilan unit langsung ke lokasi Anda di Bekasi, Jaktim, Jaksel, dan Depok',
+    'Pengecekan dan tes langsung fungsi unit di tempat saat serah terima',
+  ],
+  supportedAppliances: [
+    'Kulkas 1 Pintu & 2 Pintu',
+    'Kulkas Side by Side & Inverter',
+    'Freezer Box & Freezer Rak',
+    'Showcase Minuman & Chiller Ruko',
+    'Mesin Cuci Front Loading & Top Loading',
+    'Mesin Cuci 2 Tabung & Mesin Pengering (Dryer)',
+  ],
+};
 
 export const priorityIssues: IssueDetail[] = [
   {
@@ -53,8 +121,11 @@ export const priorityIssues: IssueDetail[] = [
       'Pemeriksaan relay, overload, dan kondisi ampere kompresor',
     ],
     serviceAreaSummary:
-      'Tersedia panggilan teknisi untuk area Jakarta, Bogor, Depok, Tangerang, dan Bekasi sesuai konfirmasi jadwal.',
-    relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan', 'faq-garansi'],
+      'Tersedia panggilan teknisi untuk area Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok sesuai konfirmasi jadwal.',
+    relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/kulkas-manifold-kompresor.jpg',
+    imageCaption: 'Pengujian tekanan sirkuit refrigeran pada kompresor menggunakan manifold gauge',
+    componentFocus: 'Kompresor, Sirkuit Freon & Sistem Defrost',
   },
   {
     slug: 'kulkas-mati-total',
@@ -70,8 +141,11 @@ export const priorityIssues: IssueDetail[] = [
       'Pemeriksaan jalur sirkuit daya pada modul digital PCB',
     ],
     serviceAreaSummary:
-      'Layanan panggilan langsung ke rumah atau tempat usaha Anda di Jabodetabek.',
+      'Layanan panggilan langsung ke rumah atau tempat usaha Anda di Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok.',
     relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/kulkas-vakum-kompresor.jpg',
+    imageCaption: 'Pemeriksaan fisik blok kelistrikan kompresor, relay starter, dan jalur daya utama',
+    componentFocus: 'PTC Relay, Overload Protector & Modul PCB',
   },
   {
     slug: 'kulkas-bocor',
@@ -87,8 +161,11 @@ export const priorityIssues: IssueDetail[] = [
       'Pemeriksaan bak penampungan air kondensasi di atas kompresor',
     ],
     serviceAreaSummary:
-      'Melayani seluruh wilayah Jabodetabek terkonfirmasi.',
+      'Melayani wilayah Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok terkonfirmasi.',
     relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/kulkas-cek-jalur-belakang.jpg',
+    imageCaption: 'Inspeksi saluran pembuangan air kondensasi dan bak penampung di belakang bawah unit',
+    componentFocus: 'Saluran Drain Defrost, Bak Penampung & Gasket Pintu',
   },
   {
     slug: 'kulkas-berisik',
@@ -104,8 +181,11 @@ export const priorityIssues: IssueDetail[] = [
       'Penataan ulang pipa pendingin agar tidak beradu dengan bodi kulkas',
     ],
     serviceAreaSummary:
-      'Kunjungan teknisi panggilan wilayah Jabodetabek.',
+      'Kunjungan teknisi panggilan wilayah Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok.',
     relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/kulkas-cek-kabinet-dalam.jpg',
+    imageCaption: 'Pemeriksaan rumah kipas evaporator di ruang dalam serta dudukan kompresor belakang',
+    componentFocus: 'Motor Kipas Evaporator & Dudukan Karet Kompresor',
   },
   {
     slug: 'mesin-cuci-tidak-berputar',
@@ -122,8 +202,11 @@ export const priorityIssues: IssueDetail[] = [
       'Pemeriksaan sensor door lock switch',
     ],
     serviceAreaSummary:
-      'Tersedia untuk area Jakarta, Bogor, Depok, Tangerang, dan Bekasi.',
-    relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan', 'faq-garansi'],
+      'Tersedia untuk area Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok.',
+    relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/mesincuci-bongkar-unit.jpg',
+    imageCaption: 'Pembongkaran kabinet mesin cuci di lokasi untuk memeriksa mekanisme penggerak tabung',
+    componentFocus: 'Dinamo Motor, Kapasitor, V-Belt & Gearbox',
   },
   {
     slug: 'mesin-cuci-tidak-membuang-air',
@@ -139,8 +222,11 @@ export const priorityIssues: IssueDetail[] = [
       'Pemeriksaan kabel sinyal pengendali katup dari modul utama',
     ],
     serviceAreaSummary:
-      'Melayani perbaikan di tempat di seluruh Jabodetabek terkonfirmasi.',
+      'Melayani perbaikan di tempat di Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok.',
     relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/mesincuci-lepas-casing.jpg',
+    imageCaption: 'Pelepasan panel depan untuk membersihkan sumbatan katup dan menguji pompa pembuangan',
+    componentFocus: 'Drain Pump, Filter Koin & Katup Pembuangan',
   },
   {
     slug: 'mesin-cuci-tidak-menyala',
@@ -156,8 +242,11 @@ export const priorityIssues: IssueDetail[] = [
       'Perbaikan atau penggantian komponen modul kontrol',
     ],
     serviceAreaSummary:
-      'Teknisi siap datang ke lokasi dengan janji temu.',
+      'Teknisi siap datang ke lokasi Anda di Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok.',
     relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/mesincuci-bongkar-unit.jpg',
+    imageCaption: 'Pemeriksaan jalur kabel daya dan blok modul kontrol elektronik pada bagian atas unit',
+    componentFocus: 'Modul Kontrol PCB, Noise Filter & Jalur Daya',
   },
   {
     slug: 'mesin-cuci-bocor',
@@ -173,7 +262,10 @@ export const priorityIssues: IssueDetail[] = [
       'Pembersihan katup klep penutup air kotor',
     ],
     serviceAreaSummary:
-      'Panggilan teknisi ke rumah atau tempat laundry di Jabodetabek.',
+      'Panggilan teknisi ke rumah atau tempat laundry di Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok.',
     relatedFaqIds: ['faq-biaya-cek', 'faq-cara-pesan'],
+    imagePath: '/images/mesincuci-lepas-casing.jpg',
+    imageCaption: 'Pemeriksaan karet pintu (bellow seal) dan sambungan selang bawah mesin cuci',
+    componentFocus: 'Karet Bellow Pintu, Seal Poros & Selang Pembuangan',
   },
 ];

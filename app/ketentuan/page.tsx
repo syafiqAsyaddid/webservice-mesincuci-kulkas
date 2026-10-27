@@ -2,16 +2,25 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildPageMetadata, buildBreadcrumbJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Ketentuan Layanan - Layanan Service Kulkas & Mesin Cuci',
   description:
-    'Syarat dan ketentuan layanan perbaikan panggilan, biaya pembatalan pengecekan, dan ketentuan garansi perbaikan kulkas & mesin cuci.',
-};
+    'Syarat dan ketentuan layanan perbaikan panggilan, biaya pembatalan pengecekan, serta persetujuan biaya perbaikan kulkas & mesin cuci.',
+  path: '/ketentuan',
+});
 
 export default function KetentuanPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Beranda', path: '/' },
+    { name: 'Ketentuan Layanan', path: '/ketentuan' },
+  ]);
+
   return (
     <div className="py-8 sm:py-12 space-y-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <JsonLd data={breadcrumbJsonLd} />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="text-sm text-text-muted">
         <ol className="flex items-center space-x-2">
@@ -48,7 +57,7 @@ export default function KetentuanPage() {
             1. Ruang Lingkup Layanan
           </h2>
           <p className="text-sm text-text-muted leading-relaxed">
-            Layanan kami mencakup jasa pemeriksaan fisik, perawatan, dan perbaikan perangkat kulkas serta mesin cuci rumah tangga secara panggilan ke lokasi pelanggan di wilayah Jabodetabek yang telah dikonfirmasi.
+            Layanan kami mencakup jasa pemeriksaan fisik, perawatan, perbaikan, serta jual beli dan tukar tambah perangkat kulkas (1 pintu, 2 pintu, side-by-side, freezer, showcase, chiller) serta mesin cuci segala jenis secara panggilan ke lokasi pelanggan di wilayah operasional kami (Bekasi, Jakarta Timur, Jakarta Selatan, dan Depok) yang telah dikonfirmasi.
           </p>
         </section>
 
@@ -80,27 +89,7 @@ export default function KetentuanPage() {
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-primary-900">
-            4. Ketentuan Garansi Servis
-          </h2>
-          <p className="text-sm text-text-muted leading-relaxed">
-            Kami memberikan garansi pekerjaan dan suku cadang baru dengan ketentuan:
-          </p>
-          <ul className="list-disc pl-5 text-sm text-text-muted space-y-1.5">
-            <li>
-              Masa garansi berlaku antara 14 hingga 30 hari kalender sejak tanggal pekerjaan selesai dan tercantum pada nota perbaikan.
-            </li>
-            <li>
-              Garansi hanya berlaku untuk komponen atau titik kerusakan yang sama dengan yang dikerjakan oleh teknisi kami.
-            </li>
-            <li>
-              Garansi gugur jika unit terkena bencana alam (banjir, sambaran petir), lonjakan tegangan listrik PLN ekstrem, atau telah dibongkar oleh pihak ketiga lain setelah pengerjaan kami.
-            </li>
-          </ul>
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="text-xl font-bold text-primary-900">
-            5. Keselamatan Kerja di Lokasi
+            4. Keselamatan Kerja di Lokasi
           </h2>
           <p className="text-sm text-text-muted leading-relaxed">
             Pelanggan diharapkan menyediakan akses kerja yang aman di sekitar perangkat (bebas genangan air di lantai kerja dan sumber daya listrik yang dapat diakses dengan baik).

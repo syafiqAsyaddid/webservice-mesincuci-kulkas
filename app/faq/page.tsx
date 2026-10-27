@@ -4,18 +4,33 @@ import Link from 'next/link';
 import { ChevronRight, HelpCircle, MessageSquare } from 'lucide-react';
 import { Accordion } from '@/components/ui/Accordion';
 import { Button } from '@/components/ui/Button';
+import { JsonLd } from '@/components/seo/JsonLd';
 import { faqData } from '@/lib/content/faq';
 import { generateWhatsAppUrl } from '@/lib/whatsapp';
+import {
+  buildPageMetadata,
+  buildBreadcrumbJsonLd,
+  buildFaqJsonLd,
+} from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Tanya Jawab (FAQ) Layanan Service Kulkas & Mesin Cuci',
   description:
-    'Pertanyaan yang sering diajukan mengenai biaya pengecekan, garansi servis, wilayah panggilan, dan alur perbaikan kulkas & mesin cuci Jabodetabek.',
-};
+    'Pertanyaan yang sering diajukan mengenai biaya pengecekan, wilayah panggilan (Bekasi, Jakarta Timur, Jakarta Selatan, Depok), dan alur perbaikan kulkas & mesin cuci.',
+  path: '/faq',
+});
 
 export default function FaqPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Beranda', path: '/' },
+    { name: 'FAQ', path: '/faq' },
+  ]);
+
+  const faqJsonLd = buildFaqJsonLd(faqData);
+
   return (
     <div className="py-8 sm:py-12 space-y-12 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <JsonLd data={[breadcrumbJsonLd, faqJsonLd]} />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="text-sm text-text-muted">
         <ol className="flex items-center space-x-2">
@@ -46,7 +61,7 @@ export default function FaqPage() {
           Pertanyaan yang Sering Diajukan
         </h1>
         <p className="text-base sm:text-lg text-text-muted leading-relaxed">
-          Temukan jawaban seputar pemesanan teknisi panggilan, sistem biaya pengecekan, garansi komponen, dan ketersediaan layanan di wilayah Anda.
+          Temukan jawaban seputar pemesanan teknisi panggilan, sistem biaya pengecekan, pengerjaan di tempat, dan ketersediaan layanan di wilayah Anda.
         </p>
       </div>
 
@@ -68,7 +83,7 @@ export default function FaqPage() {
             Punya Pertanyaan Lain yang Belum Terjawab?
           </h2>
           <p className="text-sm text-text-muted">
-            Konsultasikan kendala atau pertanyaan Anda langsung dengan tim teknisi kami.
+            Sampaikan kendala atau pertanyaan Anda langsung kepada tim teknisi kami.
           </p>
         </div>
         <Button
@@ -76,6 +91,7 @@ export default function FaqPage() {
           size="md"
           href={generateWhatsAppUrl()}
           isExternal
+          data-inpage-whatsapp
           className="gap-2 flex-shrink-0"
         >
           <MessageSquare className="w-4 h-4" aria-hidden="true" />

@@ -10,6 +10,12 @@ export interface BusinessConfig {
   address: string;
 }
 
+export interface ServicePhoto {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
 export interface ServiceItem {
   id: string;
   slug: string;
@@ -19,6 +25,7 @@ export interface ServiceItem {
   symptoms: string[];
   ctaText: string;
   imagePath?: string;
+  galleryImages?: ServicePhoto[];
 }
 
 export interface IssueDetail {
@@ -30,6 +37,9 @@ export interface IssueDetail {
   availableAssistance: string[];
   serviceAreaSummary: string;
   relatedFaqIds: string[];
+  imagePath?: string;
+  imageCaption?: string;
+  componentFocus?: string;
 }
 
 export interface RegionArea {

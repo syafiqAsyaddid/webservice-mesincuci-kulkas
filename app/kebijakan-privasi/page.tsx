@@ -2,16 +2,25 @@ import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ChevronRight } from 'lucide-react';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { buildPageMetadata, buildBreadcrumbJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Kebijakan Privasi - Layanan Service Kulkas & Mesin Cuci',
   description:
     'Kebijakan privasi mengenai penggunaan data, komunikasi WhatsApp, dan analitik situs web layanan service panggilan kami.',
-};
+  path: '/kebijakan-privasi',
+});
 
 export default function KebijakanPrivasiPage() {
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: 'Beranda', path: '/' },
+    { name: 'Kebijakan Privasi', path: '/kebijakan-privasi' },
+  ]);
+
   return (
     <div className="py-8 sm:py-12 space-y-10 max-w-container mx-auto px-4 sm:px-6 lg:px-8">
+      <JsonLd data={breadcrumbJsonLd} />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="text-sm text-text-muted">
         <ol className="flex items-center space-x-2">
@@ -55,7 +64,7 @@ export default function KebijakanPrivasiPage() {
               <strong>Data Komunikasi WhatsApp:</strong> Nama, nomor telepon, alamat rumah, serta detail kendala perangkat yang Anda bagikan secara sukarela saat berinteraksi dengan nomor WhatsApp resmi kami.
             </li>
             <li>
-              <strong>Data Teknis Situs:</strong> Informasi penggunaan agregat seperti jenis peramban (browser), halaman yang dikunjungi, dan interaksi tombol (seperti klik tombol WhatsApp atau kalkulator estimasi biaya) melalui alat analitik web standar.
+              <strong>Data Teknis Situs:</strong> Informasi penggunaan agregat seperti jenis peramban (browser), halaman yang dikunjungi, dan interaksi tombol (seperti klik tombol WhatsApp atau pemilihan rute wilayah) melalui alat analitik web standar.
             </li>
           </ul>
         </section>
@@ -70,7 +79,7 @@ export default function KebijakanPrivasiPage() {
           <ul className="list-disc pl-5 text-sm text-text-muted space-y-1.5">
             <li>Menghubungi Anda kembali untuk konfirmasi waktu dan rute teknisi.</li>
             <li>Menavigasi teknisi ke alamat yang Anda berikan.</li>
-            <li>Mencatat riwayat pekerjaan servis dan masa garansi suku cadang.</li>
+            <li>Mencatat riwayat pekerjaan servis dan komponen yang diperbaiki.</li>
             <li>Mengevaluasi dan meningkatkan performa fungsional website.</li>
           </ul>
         </section>
@@ -86,10 +95,10 @@ export default function KebijakanPrivasiPage() {
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold text-primary-900">
-            4. Cookie dan Pelacakan Analitik
+            4. Cookie dan Pelacakan Analitik Kampanye
           </h2>
           <p className="text-sm text-text-muted leading-relaxed">
-            Website dapat menggunakan cookie esensial dan kode analitik (seperti Google Analytics / Google Ads conversion tag) untuk mengukur efektivitas kampanye informasi. Kode ini tidak mengumpulkan pesan percakapan pribadi atau data pembayaran. Anda dapat mengatur browser Anda untuk menolak cookie kapan saja.
+            Website dapat menggunakan penyimpanan sesi peramban (sessionStorage), cookie esensial, dan kode analitik (seperti Google Tag Manager, Google Analytics 4, Google Ads conversion tag, serta Meta Pixel) beserta parameter atribusi kampanye (UTM, gclid, fbclid) untuk mengukur efektivitas informasi dan iklan. Kode ini hanya mencatat interaksi agregat di situs (seperti klik tombol WhatsApp atau telepon) dan tidak mengirimkan nama, alamat, atau isi percakapan pribadi Anda ke pihak ketiga. Anda dapat mengatur peramban Anda untuk menolak cookie kapan saja.
           </p>
         </section>
 

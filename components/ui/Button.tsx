@@ -53,11 +53,11 @@ export const Button: React.FC<ButtonProps> = ({
 
   const variantClasses = {
     whatsapp:
-      'bg-gradient-to-r from-emerald-700 to-emerald-800 text-white shadow-whatsapp hover:shadow-whatsapp-hover hover:from-emerald-800 hover:to-emerald-900 hover:-translate-y-0.5 active:translate-y-0',
+      'bg-emerald-700 text-white hover:bg-emerald-800 hover:-translate-y-0.5 active:translate-y-0 shadow-xs',
     primary:
-      'bg-primary-600 text-white shadow-sm hover:bg-primary-700 hover:-translate-y-0.5 active:translate-y-0',
+      'bg-primary-900 text-white hover:bg-primary-800 hover:-translate-y-0.5 active:translate-y-0 shadow-xs',
     secondary:
-      'bg-[#EBF3FC] text-primary-900 hover:bg-[#DDEBFA] hover:text-primary-900 hover:-translate-y-0.5 active:translate-y-0 shadow-ghost',
+      'bg-[#EBF3FC] text-primary-900 hover:bg-[#DDEBFA] hover:text-primary-900 hover:-translate-y-0.5 active:translate-y-0',
     ghost:
       'bg-surface-tint text-text hover:bg-slate-200/70 hover:text-primary-900 hover:-translate-y-0.5 active:translate-y-0',
     outline:
@@ -65,7 +65,7 @@ export const Button: React.FC<ButtonProps> = ({
   }[variant];
 
   const baseClasses =
-    'inline-flex items-center justify-center rounded-button font-medium transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed select-none cursor-pointer focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2';
+    'group inline-flex items-center justify-center rounded-button font-medium transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed select-none cursor-pointer focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2';
 
   const combinedClasses = `${baseClasses} ${sizeClasses} ${variantClasses} ${className}`;
 

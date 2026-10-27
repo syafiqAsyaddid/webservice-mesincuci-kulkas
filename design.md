@@ -2,9 +2,9 @@
 ## Website Jasa Service Kulkas dan Mesin Cuci Jabodetabek
 
 **Dokumen:** `design.md`  
-**Versi:** 1.0  
-**Tanggal:** 12 Oktober 2026  
-**Status:** Panduan desain untuk implementasi  
+**Versi:** 2.0 (Redesign Strategy: The Honest Service Registry)  
+**Tanggal:** 14 Oktober 2026  
+**Status:** Panduan desain & strategi refactoring anti-slop (Taste Skill)  
 **Teknologi target:** Next.js + TypeScript  
 **Brand:** Belum ditentukan; gunakan placeholder sampai nama resmi diputuskan
 
@@ -23,6 +23,25 @@ Desain harus terasa seperti bisnis jasa lokal yang nyata dan tepercaya—bukan t
 4. **Konversi yang tidak memaksa.** WhatsApp mudah ditemukan, tetapi tidak menutupi konten atau mengganggu navigasi.
 5. **Konsisten.** Warna, tipografi, tombol, kartu, formulir, jarak, dan gaya gambar menggunakan aturan bersama.
 6. **Ringan dan mudah dipelihara.** Hindari animasi berat, dependensi berlebihan, dan komponen yang tidak menambah manfaat.
+
+### Design Philosophy
+- Typography before decoration.
+- Clarity before creativity.
+- One primary message per section.
+- Every component must justify its existence.
+
+### Anti AI Slop Rules
+Avoid:
+- Floating badges
+- Dashboard screenshots
+- Fake metrics
+- Generic testimonials
+- Decorative gradients
+- Repetitive cards
+
+### Layout Rules
+- Do not repeat the same layout pattern more than twice in succession.
+- Each section should have its own visual rhythm.
 
 ## 2. Identitas Visual
 
@@ -762,3 +781,70 @@ Desain siap diteruskan ke implementasi jika:
 - **Framework:** Next.js + TypeScript.
 - **Database:** tidak diasumsikan diperlukan untuk MVP; sesuaikan dengan PRD.
 - **Prinsip anti-AI-slop:** gunakan konten konkret, variasi layout yang disengaja, foto relevan, sedikit efek, dan jangan mengarang klaim bisnis.
+
+---
+
+## 20. Strategi Redesign: The Honest Service Registry (Taste Skill & Anti-Slop Directive)
+
+### 20.1 Konsep Utama & Arah Seni (Art Direction)
+- **Konsep:** *The Honest Service Registry* (Buku Pedoman & Catatan Servis Resmi). Mengubah visual dari "Silicon Valley CAD Cosplay" (blueprint grids, crosshairs `+`, concentric SVG arcs, monospace numbers) menjadi antarmuka layanan fisik yang berwibawa, taktil, dan jujur.
+- **Fondasi Visual:** Bidang warna solid yang tegas, tipografi editorial berskala besar (4.3× rasio display-to-body), whitespace yang lapang, dan fotografi teknisi riil.
+- **Pantangan Mutlak (Zero New Trends):** Tidak ada gradien baru, tidak ada glassmorphism, tidak ada bayangan melayang (resting drop-shadows), tidak ada grid latar belakang, dan tidak ada pill badge membungkus kalimat.
+
+### 20.2 Protokol Eliminasi AI Slop (Purge Protocol)
+Berdasarkan temuan audit komprehensif pada `ai-slop-report.md`, seluruh 12 anti-pattern berikut wajib dihapus:
+1. **8 Lapisan Blueprint Grid & Crosshairs (`R-07`):** Hapus seluruh container overlay grid di `app/layout.tsx`, `app/page.tsx`, dan `JabodetabekMapSection.tsx`, beserta karakter crosshair monospace `+` dan SVG skematik lingkaran konsentris.
+2. **Glaze Dot-Matrix 35% (`R-07` / `R-25`):** Hapus stipple grid global ber-opacity `0.35` di `app/layout.tsx:56-58`.
+3. **Corner Radial Gradient Blobs (`R-01` / `R-13`):** Hapus dua elemen ambient orbs 450px di `RootLayout`.
+4. **Greasy 3-Stop Gradients (`R-01`):** Ganti semua `bg-gradient-to-br` dengan warna datar solid (`bg-white`, `bg-[#F8FAFC]`).
+5. **Oval Pill Badges Pembungkus Kalimat (`R-01` / `R-06`):** Terapkan Directive Refactoring. Hapus seluruh pembungkus oval `rounded-full bg-primary-50` yang membungkus 1 kalimat atau lebih. Kembalikan ke hierarki tipografi bersih.
+6. **Monospace `01, 02, 03` pada Alur Langkah (`R-05`):** Ganti alur 3 langkah simetris dengan garis konektor putus-putus menjadi timeline editorial linear yang mengalir alami.
+7. **Checklist Wallpaper (`R-04`):** Hapus stempel ikon `CheckCircle2` pada teks biasa. Gunakan tata letak tipografi bersih.
+8. **Card-in-a-Card Nesting (`C-1`):** Ratakan komponen nested cards di `JabodetabekMapSection.tsx` menjadi format tabel ledger 2 kolom yang bersih.
+9. **Font Pairing & Kerning Choking (`R-06`):** Hapus `letter-spacing: -0.02em` global di `globals.css` agar tipografi bahasa Indonesia dapat bernapas lega.
+10. **Kanibalisasi CTA WhatsApp & Dead Hover CSS (`C-2`):** Tambahkan class `group` pada `Button.tsx` agar animasi panah berfungsi; sembunyikan sticky bar mobile via `IntersectionObserver` saat CTA in-page terlihat di layar.
+11. **Sub-44px Tap Targets (`R-03`):** Pastikan seluruh tab switcher, category tabs, tombol reset, dan accordion header memenuhi standar `min-h-[44px]`.
+12. **Search Placeholder Contrast (`R-25`):** Gelapkan warna placeholder di `ServiceListFilter.tsx` menjadi `#526574` (kontras 5.78:1, lulus WCAG AA).
+
+### 20.3 Sistem Tipografi & Skala
+- **Aturan Judul 2 Baris (2-Line Headline Law):** Setiap `h1`–`h6` wajib muat dalam maksimal 2 baris pada seluruh lebar viewport (< 32 karakter per baris pada desktop).
+- **Hirarki Skala (Rasio 4.3×):**
+  - Display / Hero: `clamp(2.75rem, 5vw, 4rem)` (44px – 64px, leading 1.08)
+  - Section Headings (H2): `clamp(2rem, 3.5vw, 2.75rem)` (32px – 44px, leading 1.15)
+  - Subsection / Service Titles (H3): `1.25rem` – `1.5rem` (20px – 24px)
+  - Running Body Text: `1rem` – `1.125rem` (16px – 18px, leading 1.55)
+  - Small / Metadata: `0.875rem` (14px, leading 1.4)
+- **Aturan Eyebrow / Overline:** Dilarang menggunakan container pill berlatar warna untuk label kategori. Gunakan teks plain uppercase atau sentence-case tanpa border/background (`text-xs font-semibold text-primary-700 tracking-wider uppercase mb-3`).
+
+### 20.4 Komposisi & Variasi Ritme (Membongkar Template March)
+Hentikan pengulangan 6 section identik (Centered Heading + Subtitle + 3 Kartu). Terapkan 4 arsitektur komposisi yang berbeda:
+1. **Hero Split 60/40:** Tipografi rata kiri yang tegas + foto teknisi riil yang dominan dengan sudut tajam/subtle (tanpa efek melayang).
+2. **Full-Bleed Service Facts Ledger:** Jalur data servis datar solid white tanpa kartu individual.
+3. **Asymmetric Diagnostic Split:** Judul di kolom kiri statis/sticky + pemilih gejala tabular berkategori (maksimal 4 opsi per pandangan untuk menjaga working memory).
+4. **High-Contrast Deep Band:** Bagian simulator estimasi biaya menggunakan latar belakang Navy pekat (`#0E2A47`) solid penuh untuk memusatkan fokus interaksi.
+5. **Tone Steps Antar Bagian:** Pemisah antar seksi menggunakan perbedaan saturasi warna solid (Putih `#FFFFFF` vs Kertas Hangat `#F6F8FA` vs Navy Pekat `#0E2A47`), bukan garis tipis (hairline borders) atau gradien.
+
+### 20.5 Arsitektur Whitespace & Makro-Spacing
+- **Vertical Spacing Antar Bagian:** `120px` hingga `160px` (`py-28` s.d. `py-36`) pada desktop; `64px` hingga `80px` (`py-16` s.d. `py-20`) pada perangkat bergerak.
+- **Eliminasi Bayangan Statis (Resting Shadows):** Hapus bayangan dari semua kartu diam. Bayangan hanya dipakai pada elemen yang benar-benar melayang di atas permukaan (sticky bar, menu aktif, modal).
+
+### 20.6 Directive Refactoring Komponen
+- **Tombol & Tindakan:**
+  - WhatsApp CTA: Solid Deep Emerald (`bg-[#047857]` hover `bg-[#065F46]`), teks `#FFFFFF`. Tanpa gradien.
+  - Secondary Action: Solid Navy atau Outline tegas dengan border 1.5px.
+  - Tambahkan kelas `group` pada `Button.tsx` agar `group-hover:translate-x-1` berfungsi.
+- **Label & Badge (Aturan Penjelasan):**
+  - Hapus seluruh oval pill berlatar belakang warna yang membungkus teks naratif/penjelas.
+  - Badge pill HANYA diizinkan untuk status ringkas 1–2 kata ("Tersedia Hari Ini", "Garansi 30 Hari").
+- **Aksesibilitas & WAI-ARIA:**
+  - Tablist di `ServiceTabSwitcher` dan `ServiceListFilter` wajib menerapkan roving `tabIndex={0/-1}` dan memindahkan DOM focus saat tombol panah ditekan.
+  - Setiap target interaktif memiliki tinggi minimal 44px (`min-h-[44px]`).
+- **Mobile Sticky CTA:**
+  - Gunakan `IntersectionObserver` agar sticky floating bar WhatsApp di ponsel otomatis bersembunyi ketika tombol CTA WhatsApp di dalam halaman terlihat di viewport.
+
+### 20.7 Roadmap Implementasi Bertahap (Phased Roadmap)
+1. **Fase 1 (Distill & Purge):** Hapus 8 background pattern, grid blueprint, crosshairs, radial orbs, dan oval pill sentence wrappers.
+2. **Fase 2 (Tipografi & Spacing):** Hapus `-0.02em` global di `globals.css`, tegakkan batas 2 baris judul, dan terapkan padding seksi 120px–160px.
+3. **Fase 3 (Editorial Pacing & Komposisi):** Rombak layout alur 3 langkah dan wilayah menjadi komposisi editorial ledger.
+4. **Fase 4 (Pengerasan Komponen & Aksesibilitas):** Terapkan `min-h-[44px]`, perbaiki `group` hover pada tombol, sesuaikan kontras search placeholder, dan pasang observer pada sticky bar mobile.
+
