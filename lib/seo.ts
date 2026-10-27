@@ -9,6 +9,10 @@ export const SITE_URL = (
 
 export const DEFAULT_OG_IMAGE = '/images/kulkas-manifold-kompresor.jpg';
 
+const gscVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+  process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+
 interface PageMetadataOptions {
   title: string;
   description: string;
@@ -77,6 +81,13 @@ export function buildPageMetadata({
             'max-video-preview': -1,
           },
         },
+    ...(gscVerification
+      ? {
+          verification: {
+            google: gscVerification,
+          },
+        }
+      : {}),
   };
 }
 

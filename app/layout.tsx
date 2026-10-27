@@ -23,7 +23,9 @@ const inter = Inter({
   weight: ['400', '500', '600'],
 });
 
-const gscVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+const gscVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+  process.env.NEXT_PUBLIC_GSC_VERIFICATION;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -112,6 +114,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`${inter.variable} ${plusJakartaSans.variable}`}>
+      <head>
+        {gscVerification && (
+          <meta name="google-site-verification" content={gscVerification} />
+        )}
+      </head>
       <body className="min-h-screen flex flex-col font-sans bg-white text-text relative">
         <a
           href="#main-content"
