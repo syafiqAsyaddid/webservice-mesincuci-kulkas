@@ -27,7 +27,7 @@ export const AnalyticsProvider: React.FC = () => {
   const googleAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
   const metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
-  const primaryGtagId = ga4Id || googleAdsId;
+  const primaryGtagId = googleAdsId || ga4Id;
 
   // Capture UTM/click-ID attribution and record page_view on route change
   useEffect(() => {
